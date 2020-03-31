@@ -67,8 +67,8 @@ has_many : comments
 | Column     | Type       | Options     |
 | ---------- | ---------- | ----------- |
 | comment    | text       | null: false |
-| user_id    | references | null: false |
-| item_id    | references | null: false |
+| user_id    | references | null: false ,foreign_key: true|
+| item_id    | references | null: false ,foreign_key: true|
 | created_id | timestamp  | null: false |
 
 ### Association
@@ -102,7 +102,7 @@ belongs_to : item
 
 | Column      | Type    | Options     |
 | ----------- | ------- | ----------- |
-| user_id     | integer | null: false |
+| user_id     | integer | null: false , foreign_key: true|
 | costomer_id | string  | null: false |
 | card_id     | string  | null: false |
 
