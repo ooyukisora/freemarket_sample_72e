@@ -92,7 +92,7 @@ has_many : items
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
 | image  | string | null: false |
-| item_id| references | null: false |
+| item_id| references | null: false, foreign_key: true |
 
 ### Association
 
