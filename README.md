@@ -43,7 +43,7 @@ belongs_to : user
 | ------------ | ---------- | ------------------------------ |
 | name         | string     | null: false                    |
 | price        | integer    | null: false                    |
-| image        | string     | null: false                    |
+| image_id     | string     | null: false, foreign_key: true |
 | text         | string     | null: false                    |
 | user_id      | references | null: false, foreign_key: true |
 | category_id  | references | null: false, foreign_key: true |
