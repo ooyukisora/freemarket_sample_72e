@@ -16,7 +16,7 @@
 has_many : comments
 has_many : items
 has_many : locations
-belongs_to : card
+has_one: card
 
 
 ## location
@@ -45,7 +45,6 @@ belongs_to : user
 | ------------ | ---------- | ------------------------------ |
 | name         | string     | null: false                    |
 | price        | integer    | null: false                    |
-| image_id     | string     | null: false, foreign_key: true |
 | text         | string     | null: false                    |
 | user_id      | references | null: false, foreign_key: true |
 | category_id  | references | null: false, foreign_key: true |
