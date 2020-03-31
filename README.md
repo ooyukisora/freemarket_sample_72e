@@ -16,6 +16,8 @@
 has_many : comments
 has_many : items
 has_many : locations
+belongs_to : card
+
 
 ## location
 
@@ -51,14 +53,14 @@ belongs_to : user
 | size         | string     | null: false                    |
 | delivery_fee | string     | null: false                    |
 | location_id  | references | null: false, foreign_key: true |
-| shopping_day | string     | null: false                    |
-| comment_id   | references | null: false                    |
+| shipping_day | string     | null: false                    |
 | buyer_id     | references | null: false, foreign_key: true |
 
 ### Association
 
 belongs_to : user
 belongs_to : category
+has_many : images
 has_many : comments
 
 ## comments テーブル
@@ -90,9 +92,8 @@ has_many : items
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| image1 | string | null: false |
-| image2 | string |             |
-| image3 | string |             |
+| image  | string | null: false |
+| item_id| references | null: false |
 
 ### Association
 
