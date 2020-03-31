@@ -11,17 +11,6 @@
 | last_name_kana | string | null: false |
 | birthday       | string | null: false |
 
-## usersテーブル
-|Column|Type|Options|
-|------|----|-------|
-|nickname|string|null: false|
-|email|string|null: false|
-|password|string|null: false|
-|real-firat|string|null: false|
-|real-last|string|null: false|
-|hurigana-first| string| null: false|
-|hurigana-last| string| null: false|
-|birthday| string| null: false|
 ### Association
 
 has_many : comments
@@ -32,7 +21,7 @@ has_many : locations
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| first_name     | string     | null:false                     |
+| first_name     | string     | null: false                     |
 | last_name      | string     | null: false                    |
 | first_name_kana| string     | null: false                    |
 | last_name_kana | string     | null: false                    |
@@ -40,8 +29,8 @@ has_many : locations
 | prefecture     | string     | null: false                    |
 | municipality   | string     | null: false                    |
 | address        | string     | null: false                    |
-| discription    | string     |
-| phone_number   | integer    |
+| discription    | string     |                                |
+| phone_number   | integer    |                                |
 | user_id        | references | null: false, foreign_key: true |
 
 ### Association
@@ -63,7 +52,7 @@ belongs_to : user
 | delivery_fee | string     | null: false                    |
 | location_id  | references | null: false, foreign_key: true |
 | shopping_day | string     | null: false                    |
-| comment_id   | references | null: false, foreign_key: true |
+| comment_id   | references | null: false                    |
 | buyer_id     | references | null: false, foreign_key: true |
 
 ### Association
@@ -96,3 +85,27 @@ belongs_to : item
 ### Association
 
 has_many : items
+
+## image テーブル
+
+| Column | Type   | Options     |
+| ------ | ------ | ----------- |
+| image1 | string | null: false |
+| image2 | string |             |
+| image3 | string |             |
+
+### Association
+
+belongs_to : item
+
+## cards テーブル
+
+| Column      | Type    | Options     |
+| ----------- | ------- | ----------- |
+| user_id     | integer | null: false |
+| costomer_id | string  | null: false |
+| card_id     | string  | null: false |
+
+### Association
+
+belongs_to : user
