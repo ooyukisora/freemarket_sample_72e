@@ -11,6 +11,17 @@
 | last_name_kana | string | null: false |
 | birthday       | string | null: false |
 
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|email|string|null: false|
+|password|string|null: false|
+|real-firat|string|null: false|
+|real-last|string|null: false|
+|hurigana-first| string| null: false|
+|hurigana-last| string| null: false|
+|birthday| string| null: false|
 ### Association
 
 has_many : comments
