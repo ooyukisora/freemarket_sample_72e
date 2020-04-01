@@ -1,21 +1,60 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.Signup
+  .header
+    .icon
+  .Main
+    .content
+      %br/
+      %h5 会員情報入力
+      %br/
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+
+        .field
+          %label ニックネーム
+          %span.check 必須
+          %br/
+          = f.text_field :nickname
+          .input_default
+            -# 例)太郎
+        .field
+          %label メールアドレス
+          %span.check 必須
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email"
+        .field
+          %label パスワード
+          - if @minimum_password_length
+            %em
+              　(#{@minimum_password_length} 文字以上)
+              %span.check 必須
+          %br/
+          = f.password_field :password, autocomplete: "new-password"
+        .field
+          %label パスワード再入力
+          %span.check 必須
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "new-password"
+        .field
+          %label お名前(全角)
+          %span.check 必須
+          %br/
+        = f.text_field :first_name
+        = f.text_field :last_name
+        .field
+          %label お名前カナ(全角)
+          %span.check 必須
+          %br/
+        = f.text_field :first_name_kana
+        = f.text_field :last_name_kana
+        .field
+          %label 生年月日
+          %span.check 必須
+          %em 　例)19001203
+          %br/
+          = f.text_field :birthday
+
+        .actions
+          = f.submit "次へ進む"
+      -# = render "devise/shared/links"
+  
+  .footer
