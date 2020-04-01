@@ -10,51 +10,57 @@
         = render "devise/shared/error_messages", resource: resource
 
         .field
-          %label ニックネーム
-          %span.check 必須
-          %br/
-          = f.text_field :nickname
-          .input_default
-            -# 例)太郎
+          .field-left
+            %label ニックネーム
+            %span.check 必須
+            %br/
+            = f.text_field :nickname
         .field
-          %label メールアドレス
-          %span.check 必須
-          %br/
-          = f.email_field :email, autofocus: true, autocomplete: "email"
+          .field-left
+            %label メールアドレス
+            %span.check 必須
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email"
         .field
-          %label パスワード
-          - if @minimum_password_length
-            %em
-              　(#{@minimum_password_length} 文字以上)
-              %span.check 必須
-          %br/
-          = f.password_field :password, autocomplete: "new-password"
+          .field-left
+            %label パスワード
+            - if @minimum_password_length
+              %em
+                　(#{@minimum_password_length} 文字以上)
+                %span.check 必須
+            %br/
+            = f.password_field :password, autocomplete: "new-password"
         .field
-          %label パスワード再入力
-          %span.check 必須
-          %br/
-          = f.password_field :password_confirmation, autocomplete: "new-password"
+          .field-left
+            %label パスワード再入力
+            %span.check 必須
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "new-password"
+        .field1
+          .field-left1
+            %label お名前(全角)
+            %span.check 必須
+            %br/
+            .input_area
+              = f.text_field :first_name
+              = f.text_field :last_name
+        .field1
+          .field-left1
+            %label お名前カナ(全角)
+            %span.check 必須
+            %br/
+            .input_area
+              = f.text_field :first_name_kana
+              = f.text_field :last_name_kana
         .field
-          %label お名前(全角)
-          %span.check 必須
-          %br/
-        = f.text_field :first_name
-        = f.text_field :last_name
-        .field
-          %label お名前カナ(全角)
-          %span.check 必須
-          %br/
-        = f.text_field :first_name_kana
-        = f.text_field :last_name_kana
-        .field
-          %label 生年月日
-          %span.check 必須
-          %em 　例)19001203
-          %br/
-          = f.text_field :birthday
+          .field-left
+            %label 生年月日
+            %span.check 必須
+            %em 　例)19001203
+            %br/
+            = f.text_field :birthday
 
         .actions
           = f.submit "次へ進む"
-      -# = render "devise/shared/links"
   
   .footer
