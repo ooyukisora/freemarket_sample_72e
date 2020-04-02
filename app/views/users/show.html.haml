@@ -1,16 +1,46 @@
 .container
   .header
+    ヘッダー差込
   .contents
-    .__mypage
-      マイページ
-      .__item-list
-      .__sell
-      .__buy
-    .__card
-      .__registration
-    .__profile
-      .__name
-        name
-      .__information
-        お知らせ
+    .contents__left
+      .contents__left__profile
+        
+      .contents__left__menu
+        %ul 
+          %li<>
+            .contents__left__menu__edit
+              = link_to "登録情報の編集",'#'
+          %li<>
+            .contents__left__menu__list
+              = link_to "一覧",'#'
+          %li<>
+            .contents__left__menu__sell
+              = link_to "出品する",'#'
+          %li<>
+            .contents__left__menu__buy
+              = link_to "購入する",'#'
+          %li<>
+            .contents__left_menu__card
+              = link_to "クレジットカードを登録する",'#'
+          %li<>
+            .contents__left__menulog-out
+              = link_to "ログアウト",'/users/sign_out'
+          %li<>
+            .contents__left__menu__a
+              = link_to "aaa",'#'
+            
+    .contents__right
+      .contents__right__main
+        .contents__right__main__img
+        .contents__right__main__name
+          name
+      .contents__right__infomation
+        .item
+          出品中の商品
+        .item
+          出品中の商品
+        .item
+          出品中の商品
+  .footer
+    フッター差込
 
