@@ -1,13 +1,12 @@
 .address
   .header
-    .icon
+    = image_tag "/assets/logo.png", size:'200x60', class:'img'
   .body
     .contents
       %br/
       %h5 商品配送先住所登録
       %br/
       = form_for @address do |f|
-        -# = render “devise/shared/error_messages”, resource: @address
         .box
           .box-label
             %label1 お名前(全角)

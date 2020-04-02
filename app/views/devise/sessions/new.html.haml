@@ -1,6 +1,6 @@
 .login
   .image_header
-    %img{:src => "http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg"}/
+    = image_tag "/assets/logo.png", size:'200x60', class:'img'
   .login_box
     .login_box_text
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
