@@ -368,6 +368,9 @@ button {
     line-height: 1.4;
     font-weight: bold;
   }
+  &:last-child {
+    padding-bottom: 80px;
+  }
 }
 
 .productHead {
@@ -390,7 +393,6 @@ button {
   &__list {
     width: 220px;
     display: inline-block;
-    float: left;
     &:hover {
       opacity: 0.5;
     }
