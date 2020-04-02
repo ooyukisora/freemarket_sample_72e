@@ -1,7 +1,9 @@
-.Signup {
+.address {
   background-color: #f5f5f5;
   text-align: center;
   .header {
+    background-color: #f5f5f5;
+    text-align: center;
     .icon {
       display: inline-block;
       text-align: center;
@@ -13,83 +15,77 @@
     }
   }
 
-  .Main {
+  .body{
     font-size: 14px;
     width: 500px;
-    height: 760px;
+    height: 750px;
     margin: auto;
-    background-color: #fff;
-    .content {
-      h5 {
+    background-color: white;
+    .contents{
+      h5{
         font-size: 20px;
       }
-
-      label,
-      em,
-      span {
-        left: 0px;
+      .check {
+        background-color: red;
+        color: white;
+        padding: 1px;
       }
-      
-      .field {
+      .box{
         display: block;
         text-align: center;
         margin: 10px 20% 10px;
         height: 60px;
         position: relative;
-
-        .field-left{
+        .box-label{
           float: left;
         }
-
-        #user_nickname,
-        #user_email,
-        #user_password,
-        #user_password_confirmation,
-        #user_birthday {
-          position: absolute;
-          left: 0px;
-          height: 40px;
-          width: 300px;
-        }
-      }
-
-      .field1 {
-        display: block;
-        text-align: center;
-        margin: 10px 20% 10px;
-        height: 60px;
-        position: relative;
-
-        .field-left1{
-          float: left;
-        }
-
         .input_area {
           position: absolute;
           height: 50px;
           width: 100%;
           display: flex;
           justify-content: space-between;
+          #address_first_name,
+          #address_first_name_kana {
+            height: 40px;
+            width: 130px;
+          }
+          #address_last_name,
+          #address_last_name_kana {
+            height: 40px;
+            width: 130px;
+         }
+      }
+    }
 
-          #user_first_name,
-          #user_first_name_kana {
-            height: 40px;
-            width: 130px;
-          }
-          #user_last_name,
-          #user_last_name_kana {
-            height: 40px;
-            width: 130px;
-          }
+      .box1{
+        display: block;
+        text-align: center;
+        margin: 10px 20% 10px;
+        height: 60px;
+        position: relative;
+
+        .box-label1{
+          float: left;
+        }
+        #address_postal,
+        #address_prefecture,
+        #address_municipality,
+        #address_address,
+        #address_discription,
+        #address_phone_number {
+          position: absolute;
+          left: 0px;
+          height: 40px;
+          width: 300px;
+        }
+        .check1 {
+          background-color: blue;
+          color: white;
+          padding: 1px;
         }
       }
-
-      .check {
-        background-color: red;
-        color: white;
-        padding: 1px;
-      }
-      .actions {
+      .register {
         input {
           background-color: #66cccc;
           color: white;
@@ -100,12 +96,12 @@
           line-height: 48px;
           font-size: 14px;
           margin: 20px auto;
+          }
         }
-      }
     }
   }
   .footer {
-    height: 100px;
+    height: 200px;
     width: 100%;
   }
 }

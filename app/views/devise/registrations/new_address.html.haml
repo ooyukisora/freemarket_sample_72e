@@ -1,0 +1,66 @@
+.address
+  .header
+    .icon
+  .body
+    .contents
+      %br/
+      %h5 商品配送先住所登録
+      %br/
+      = form_for @address do |f|
+        -# = render “devise/shared/error_messages”, resource: @address
+        .box
+          .box-label
+            %label1 お名前(全角)
+            %span.check 必須
+            %br/
+            .input_area
+              = f.text_field :first_name
+              = f.text_field :last_name
+        .box
+          .box-label
+            %label1 お名前カナ(全角)
+            %span1.check 必須
+            %br/
+            .input_area
+              = f.text_field :first_name_kana
+              = f.text_field :last_name_kana
+        .box1
+          .box-label1
+            %label1 郵便番号（数字）
+            %span1.check 必須
+            %br/
+            = f.text_field :postal
+        .box1
+          .box-label1
+            %label1 都道府県
+            %span1.check 必須
+            %br/
+            = f.text_field :prefecture
+        .box1
+          .box-label1
+            %label1 市区町村
+            %span1.check 必須
+            %br/
+            = f.text_field :municipality
+        .box1
+          .box-label1
+            %label1 番地
+            %span1.check 必須
+            %br/
+            = f.text_field :address
+        .box1
+          .box-label1
+            %label1 建物名
+            %span1.check1 任意
+            %br/
+            = f.text_field :discription
+        .box1
+          .box-label1
+            %label1 電話番号
+            %span1.check1 任意
+            %br/
+            = f.text_field :phone_number
+        .register
+          = f.submit "登録する"
+  
+  .footer
