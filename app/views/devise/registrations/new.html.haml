@@ -3,28 +3,28 @@
   = render "devise/shared/error_messages", resource: @user
 
   .field
-    = f.label :nickname
+    = f.label "ニックネーム"
     %br/
     = f.text_field :nickname
 
   .field
-    = f.label :farst_name
+    = f.label "姓"
     %br/
     = f.text_field :farst_name
   .field
-    = f.label :last_name
+    = f.label "名"
     %br/
     = f.text_field :last_name
   .field
-    = f.label :farst_name_kana
+    = f.label "姓(かな)"
     %br/
     = f.text_field :farst_name_kana
   .field
-    = f.label :last_name_kana
+    = f.label "名(かな)"
     %br/
     = f.text_field :last_name_kana
   .field
-    = f.label :birthday
+    = f.label "生年月日"
     %br/
     = f.text_field :birthday
 
@@ -33,14 +33,14 @@
     %br/
     = f.email_field :email, autofocus: true, autocomplete: "email"
   .field
-    = f.label :password
+    = f.label "パスワード"
     - if @minimum_password_length
       %em
-        (7 characters minimum)
+        (7 文字以上)
     %br/
     = f.password_field :password, autocomplete: "new-password"
   .field
-    = f.label :password_confirmation
+    = f.label "パスワード(確認)"
     %br/
     = f.password_field :password_confirmation, autocomplete: "new-password"
   .actions
