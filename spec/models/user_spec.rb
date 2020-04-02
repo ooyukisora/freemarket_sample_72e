@@ -56,6 +56,10 @@ describe User do
     end
   end
 
-
+  it "is valid with a password that has more than 7 characters " do
+    user = FactoryBot.build(:user, password: "0000000", password_confirmation: "0000000")
+    user.valid?
+    expect(user).to be_valid
+  end
   
 end
