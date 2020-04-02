@@ -15,10 +15,7 @@
 
 .contents{
   display: flex;
-}
-
-
-.contents__left{
+&__left{
   height: 650px;
   width: 500px;
   margin: 40px 20px 0 170px ;
@@ -95,6 +92,7 @@
   }
 }
 
+}
 .item{
   height: 245px;
   width: 220px;
