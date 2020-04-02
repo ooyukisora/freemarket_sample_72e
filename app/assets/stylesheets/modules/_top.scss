@@ -208,6 +208,9 @@ button {
         display: flex;
         flex-direction: column;
         align-items: center;
+        &--last {
+          margin: 16px 0 0 0;
+        }
         &__pict {
           position: relative;
           margin-bottom: 20px;
@@ -228,14 +231,6 @@ button {
             width: 100%;
             vertical-align: bottom;
           }
-        }
-        &__list--last {
-          width: 30%;
-          margin: 16px 0 0 0;
-          text-align: center;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
         }
         &__text {
           font-weight: bold;
@@ -395,13 +390,14 @@ button {
   &__list {
     width: 220px;
     display: inline-block;
-    // float: left;
+    float: left;
     &:hover {
       opacity: 0.5;
     }
     & a {
       background-color: #fff;
       display: inline-block;
+      text-decoration: none;
     }
     &__img {
       width: 220px;
