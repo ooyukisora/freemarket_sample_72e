@@ -8,10 +8,10 @@ describe User do
     end
   
 
-    it "is invalid without a farst_name" do
+    it "is invalid without a first_name" do
       user = User.new()
       user.valid?
-      expect(user.errors.messages[:farst_name]).to include("can't be blank")
+      expect(user.errors.messages[:first_name]).to include("can't be blank")
     end
   
 
@@ -24,10 +24,10 @@ describe User do
   
 
   
-    it "is invalid without a farst_name_kana" do
+    it "is invalid without a first_name_kana" do
       user = User.new()
       user.valid?
-      expect(user.errors.messages[:farst_name_kana]).to include("can't be blank")
+      expect(user.errors.messages[:first_name_kana]).to include("can't be blank")
     end
   
 

@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
 
-      validates :nickname, :farst_name, :last_name, :farst_name_kana, 
+      validates :nickname, :first_name, :last_name, :first_name_kana, 
         :last_name_kana, :birthday, presence: true
 
       has_one :address
@@ -13,9 +13,9 @@ class User < ApplicationRecord
         factory :user do
           nickname              {"abe"}
           email                 {"kkk@gmail.com"}
-          farst_name              {"山本"}
+          first_name              {"山本"}
           last_name               {"隼也"}
-          farst_name_kana         {"やまもと"}
+          first_name_kana         {"やまもと"}
           last_name_kana         {"しゅんや"}
           birthday {"1996/12/16"}
           password              {"00000000"}
