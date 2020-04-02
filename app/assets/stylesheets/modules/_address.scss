@@ -1,0 +1,100 @@
+.address {
+  background-color: #f5f5f5;
+  text-align: center;
+  .header {
+    background-color: #f5f5f5;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 10px;
+  }
+
+  .body{
+    font-size: 14px;
+    width: 500px;
+    height: 750px;
+    margin: auto;
+    background-color: white;
+    .contents{
+      h5{
+        font-size: 20px;
+      }
+      .check {
+        background-color: red;
+        color: white;
+        padding: 1px;
+      }
+      .box{
+        display: block;
+        text-align: center;
+        margin: 10px 20% 10px;
+        height: 60px;
+        position: relative;
+        .box-label{
+          float: left;
+        }
+        .input_area {
+          position: absolute;
+          height: 50px;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          #address_first_name,
+          #address_first_name_kana {
+            height: 40px;
+            width: 130px;
+          }
+          #address_last_name,
+          #address_last_name_kana {
+            height: 40px;
+            width: 130px;
+        }
+      }
+    }
+
+      .box1{
+        display: block;
+        text-align: center;
+        margin: 10px 20% 10px;
+        height: 60px;
+        position: relative;
+
+        .box-label1{
+          float: left;
+        }
+        #address_postal,
+        #address_prefecture,
+        #address_municipality,
+        #address_address,
+        #address_discription,
+        #address_phone_number {
+          position: absolute;
+          left: 0px;
+          height: 40px;
+          width: 300px;
+        }
+        .check1 {
+          background-color: blue;
+          color: white;
+          padding: 1px;
+        }
+      }
+      .register {
+        input {
+          background-color: #66cccc;
+          color: white;
+          line-height: 48px;
+          font-size: 14px;
+          text-align: center;
+          width: 250px;
+          line-height: 48px;
+          font-size: 14px;
+          margin: 20px auto;
+          }
+        }
+    }
+  }
+  .bottom {
+    height: 200px;
+    width: 100%;
+  }
+}
