@@ -1,3 +1,108 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.container{
+  height: 900px;
+  background-color: #f8f8f8;
+}
+
+.header{
+  height: 99.75px;
+  background-color: honeydew;
+}
+
+.contents{
+  display: flex;
+&__left{
+  height: 650px;
+  width: 500px;
+  margin: 40px 20px 0 170px ;
+  
+  &__menu{
+    margin-top: 30px;
+    width: 250px;
+    height: 400px;
+    margin-left: 75px;
+  ul{
+    
+    height: 400px;
+
+  li{
+    height: 78px;
+    line-height: 78px;
+    background-color: #3CCACE;
+    border-radius: 5px;
+    border: white solid 1px;
+    text-align: center;
+    a{
+      text-decoration: none;
+      font-size: 17px;
+      color: ivory;
+      display: block;
+      width: 250px;
+      height: 80px;
+      transition: background-color .3s;
+    }
+    a:hover{
+      background-color: rgb(132, 220, 223);
+      border-radius: 5px;
+      width: 250px;
+    }
+  }
+  }
+  }
+}
+
+.contents__right{
+  height: 600px;
+  width: 820px;
+  background-color: lightgreen;
+  margin: 60px 140px 60px 0;
+  border-radius: 5px;
+  &__main{
+    height: 130px;
+    width:100%;
+    background-color: #3CCACE;
+    display: flex;
+    &__img{
+      height: 98px;
+      width: 98px;
+      margin: 15px 60px;
+      background-color: lightyellow;
+      border: gray solid 1px;
+      border-radius: 50%;
+    }
+    &__name{
+      line-height: 130px;
+      font-size: 40px;
+      color: ivory;
+    }
+  }
+  &__infomation{
+    height: 470px;
+    width: 100%;
+    background-color: rgb(231, 231, 231);
+    padding-top: 20px;
+    display: flex;
+    a{
+
+    }
+  }
+}
+
+}
+.item{
+  height: 245px;
+  width: 220px;
+  background-color: white;
+  margin: 30px 0 0 40px;
+
+}
+
+
+.footer{
+  height: 713.67px;
+  background-color: honeydew;
+}
