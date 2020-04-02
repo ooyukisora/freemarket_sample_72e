@@ -1,21 +1,48 @@
 %h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
+= form_for(@user, url: user_registration_path) do |f|
+  = render "devise/shared/error_messages", resource: @user
+
+  .field
+    = f.label "ニックネーム"
+    %br/
+    = f.text_field :nickname
+
+  .field
+    = f.label "姓"
+    %br/
+    = f.text_field :farst_name
+  .field
+    = f.label "名"
+    %br/
+    = f.text_field :last_name
+  .field
+    = f.label "姓(かな)"
+    %br/
+    = f.text_field :farst_name_kana
+  .field
+    = f.label "名(かな)"
+    %br/
+    = f.text_field :last_name_kana
+  .field
+    = f.label "生年月日"
+    %br/
+    = f.text_field :birthday
+
   .field
     = f.label :email
     %br/
     = f.email_field :email, autofocus: true, autocomplete: "email"
   .field
-    = f.label :password
+    = f.label "パスワード"
     - if @minimum_password_length
       %em
-        (#{@minimum_password_length} characters minimum)
+        (7 文字以上)
     %br/
     = f.password_field :password, autocomplete: "new-password"
   .field
-    = f.label :password_confirmation
+    = f.label "パスワード(確認)"
     %br/
     = f.password_field :password_confirmation, autocomplete: "new-password"
   .actions
-    = f.submit "Sign up"
+    = f.submit "Next"
 = render "devise/shared/links"
