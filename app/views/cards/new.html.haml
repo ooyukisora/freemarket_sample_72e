@@ -1,19 +1,21 @@
-.wrapper
+.wrapper__card
   .icon
     = image_tag 'http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg'
-  .box
+  .card
     %h3 新規クレジットカード登録
     = form_tag('#', method: :post, id: 'charge-form',  name: "inputForm") do
-      .box__number
-        %label カード番号 
-        %span 必須
-        %br
+      .card__number
+        .card__number__field
+          %label カード番号 
+          %span2 必須
+          %br
         = text_field_tag "number", "", class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
         %br
-      .box__date
-        %label 有効期限
-        %span 必須
-        %br
+      .card__date
+        .card_date_field
+          %label 有効期限
+          %span2 必須
+          %br
         %select#exp_month{name: "exp_month", type: "text"}
           %option{value: ""} --
           %option{value: "1"}01
@@ -43,17 +45,17 @@
           %option{value: "2029"}29
         年
         %br
-      .box__code
+      .card__code
         %label セキュリティコード
-        %span 必須
+        %span2 必須
         %br
         = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
         %br
-      .box__name
+      .card__name
         %label 名義
-        %span 必須
+        %span2 必須
         %br
         = text_field_tag "name", "", class: "name", placeholder: "例)TAROU FURIMA", type: "text"
         #card_token
-      .box__submit
-        = submit_tag "追加する", id: "token_submit", class: "box__submit__buttun"
+      .card__submit
+        = submit_tag "追加する", id: "token_submit", class: "card__submit__buttun"

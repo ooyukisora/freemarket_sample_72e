@@ -1,0 +1,30 @@
+%header.top-header
+  .header__inner
+    .header__main
+      %h1.header-icon
+        = link_to '/' do
+          = image_tag 'http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg'
+      .searchBox
+        %form{action: "#", method: "get"}
+          %input{name: 'utf8', type: 'hidden', value: '✓'}
+          %input#searchInput.searchBox--input{name: "key", placeholder: "キーワードから探す"}
+          %button{type: "submit"}
+            .searchBox__icon
+              = image_tag 'http://furima.tokyo/assets/icon-search-60a83ada85216fe00789cd16065281694d9a08948275fef83683fadcf131d84d.svg'
+          %input{type: 'hidden', name: 'authentisity_token', value: 'h+X6EUxjNpAuZhAY9+DLNfIzldTnWddvpqE6KgdVcV2IVlAgR+BIiXXPRtqJuRSeIvtbu6/bV4RuSvIdikGvPw=='}
+      %ul.resultLists
+    .header__nav
+      %ul.listsLeft
+        %li.listsLeft__item.listsLeft__item--first
+          = link_to 'カテゴリー', '#', id: "catBtn"
+        %li.listsLeft__item
+          = link_to 'ブランド', '#', id: "blandBtn"
+      %ul.listsRight
+        - if user_signed_in?
+          %li.listsRight__item.listsRight__item--login
+            = link_to 'マイページ', user_path(current_user.id)
+        - else
+          %li.listsRight__item.listsRight__item--new
+            = link_to '新規会員登録', new_user_registration_path
+          %li.listsRight__item.listsRight__item--login
+            = link_to 'ログイン', new_user_session_path
