@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   end
   def new
     @item = Item.new
+    @location = current_user.address.prefecture
   end
   def create
     @item = Item.new(item_params)
