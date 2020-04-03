@@ -29,6 +29,11 @@
   }
 }
 
+.showMain{
+  padding: 40px;
+  margin: 0 auto;
+}
+
 .showMain::after {
   display: block;
   content: "";
