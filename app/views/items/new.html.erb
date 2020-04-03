@@ -7,11 +7,11 @@
     ["目立った傷や汚れなし", "目立った傷や汚れなし" ] ,["やや傷, 汚れあり", "やや傷, 汚れあり"], 
     ["汚れあり", "汚れあり"], ["状態が悪い", "状態が悪い"] ], prompt: "商品の状態" %>
 
-  <%= f.text_field :delivery_fee, placeholder: :送料 %>
-  <%= f.text_field :shipping_day, placeholder: :予定日数 %>
+  <%= f.number_field :delivery_fee, placeholder: :送料 %>
+  <%= f.number_field :shipping_day, placeholder: :予定日数 %>
 
+  <%= f.collection_select :from_area, Prefecture.all, :name, :name, {}, prompt: "---" %>
   <%= f.submit '出品する', class: :form__btn %>
 <% end %>
-<p>発送元</p>
-<b><%= @location %></b>
+
 <p>image とtag は後日</p>

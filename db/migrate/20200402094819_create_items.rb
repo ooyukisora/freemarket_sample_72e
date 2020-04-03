@@ -8,8 +8,10 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :size
       t.string :status
       t.string :delivery_fee
+      t.string :from_area
       t.string :shipping_day
       t.references :user
+      t.integer :prefecture_id
       # t.references :category
       # t.references :address
       # t.references :image
