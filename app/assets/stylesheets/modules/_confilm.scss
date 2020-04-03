@@ -1,0 +1,18 @@
+
+.single-container{
+  height: 100vh;
+  width: 100vw;
+  background-color: yellowgreen;
+  &__header{
+    height: 128px;
+    background-color: pink;
+  }
+  &__main{
+    height: 945px;
+    background-color: salmon;
+  }
+  &__footer{
+    height: 220px;
+    background-color: skyblue;
+  }
+}
