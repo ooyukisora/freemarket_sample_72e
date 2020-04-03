@@ -3,9 +3,9 @@
   <%= f.text_field :name, placeholder: :商品名 %>
   <%= f.text_area :text, placeholder: :商品説明 %>
   <%= f.number_field :price, placeholder: :値段 %>
-  <%= f.collection_select :status, Condition.all, :name, :name, {}, prompt: "---" %>
 
-  <%= f.number_field :delivery_fee, placeholder: :送料 %>
+  <%= f.collection_select :status, Condition.all, :name, :name, {}, prompt: "---" %>
+  <%= f.collection_select :delivery_fee, Burden.all, :name, :name, {}, prompt: "---" %>
   <%= f.number_field :shipping_day, placeholder: :予定日数 %>
 
   <%= f.collection_select :from_area, Prefecture.all, :name, :name, {}, prompt: "---" %>
