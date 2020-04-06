@@ -73,6 +73,7 @@ gem 'haml-rails'
 gem 'devise'
 gem 'payjp'
 gem "font-awesome-sass"
+gem 'better_errors'
 
 group :production do
   gem 'unicorn'

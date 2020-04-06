@@ -218,16 +218,23 @@
   }
 }
 
-.links li {
-  float: left;
-  & a {
-    text-decoration: none;
-    color: #3ccace;
+.links {
+  list-style: none;
+  &.links li {
+    float: left;
+    & a {
+      text-decoration: none;
+      color: #3ccace;
+    }
   }
-}
-
-li:last-child {
-  float: right;
+  &.links li:last-child {
+    float: right;
+  }
+  &.links:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
 }
 
 .relatedItems a {
