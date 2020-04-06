@@ -11,10 +11,6 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :from_area
       t.string :shipping_day
       t.references :user
-      t.integer :prefecture_id
-      t.integer :condition_id
-      t.integer :burden_id
-      t.integer :shipday_id
       # t.references :category
       # t.references :address
       # t.references :image

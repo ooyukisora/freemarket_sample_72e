@@ -1,12 +1,16 @@
 <%= form_with model: @item, local: true do |f| %>
 
+  <%= f.fields_for :images do |i| %>
+    <%= i.file_field :image %><br>
+  <% end %>
+
   <%= f.text_field :name, placeholder: :商品名 %>
   <%= f.text_area :text, placeholder: :商品説明 %>
   <%= f.number_field :price, placeholder: :値段 %>
 
   <%= f.collection_select :status, Condition.all, :name, :name, {}, prompt: "---" %>
   <%= f.collection_select :delivery_fee, Burden.all, :name, :name, {}, prompt: "---" %>
-  <%= f.collection_select :shippimg_day, Shipday.all, :name, :name, {}, prompt: "---" %>
+  <%= f.collection_select :shipping_day, Shipday.all, :name, :name, {}, prompt: "---" %>
 
   <%= f.collection_select :from_area, Prefecture.all, :name, :name, {}, prompt: "---" %>
   <%= f.submit '出品する', class: :form__btn %>
