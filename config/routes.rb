@@ -10,8 +10,10 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
     get '/users/sign_out' => 'users/registrations#destroy'
   end
+
   root "users#index"
   resources :users, only: :show
+
   resources :cards, only: [:new, :show] do
     collection do
       post 'show', to: 'cards#show'
