@@ -1,12 +1,12 @@
 .Signup
-  .header
-    = image_tag "/assets/logo.png", size:'200x60', class:'img'
+  .header_registrations
+    = image_tag 'http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg'
   .Main
     .content
       %br/
       %h5 会員情報入力
       %br/
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = form_for(@user, url: user_registration_path) do |f|
         = render "devise/shared/error_messages", resource: resource
 
         .field
