@@ -1,8 +1,13 @@
 <%= form_with model: @item, local: true do |f| %>
 
-  <%= f.fields_for :images do |i| %>
-    <%= i.file_field :image %><br>
-  <% end %>
+  <div id="image-box">
+    <%= f.fields_for :images do |image| %>
+      <div data-index="<%= image.index %>" class="js-file_group">
+        <%= image.file_field :img, class: 'js-file' %><br>
+        <span class="js-remove">削除</span>
+      </div>
+    <% end %>
+  </div>
 
   <%= f.text_field :name, placeholder: :商品名 %>
   <%= f.text_area :text, placeholder: :商品説明 %>
