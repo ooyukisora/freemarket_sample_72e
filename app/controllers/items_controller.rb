@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :set_item, except: [:index, :new, :create]
+
   def index
   end
   def new
@@ -18,6 +20,10 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(:name, :text, :price, :status, :delivery_fee, :shipping_day, :from_area, images_attributes: [:img]).merge(user_id: current_user.id)
+  end
+  
+  def set_item
+    @item = Item.find(params[:id])
   end
   
 end
