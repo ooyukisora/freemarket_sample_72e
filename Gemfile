@@ -76,4 +76,5 @@ gem "font-awesome-sass"
 
 group :production do
   gem 'unicorn'
+  gem 'devise'
 end

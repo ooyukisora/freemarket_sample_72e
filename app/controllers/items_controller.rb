@@ -3,4 +3,8 @@ class ItemsController < ApplicationController
   end
   def show
   end
+
+  def comfilm
+    
+  end
 end

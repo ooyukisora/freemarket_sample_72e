@@ -1,12 +1,12 @@
 .Signup
-  .header
+  .header_registrations
     = image_tag "/assets/logo.png", size:'200x60', class:'img'
   .Main
     .content
       %br/
       %h5 会員情報入力
       %br/
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = form_for(@user, url: user_registration_path) do |f|
         = render "devise/shared/error_messages", resource: resource
 
         .field
