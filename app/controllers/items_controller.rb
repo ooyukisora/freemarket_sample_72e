@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
     @item.images.new
     # @location = current_user.address.prefecture
   end
+  
   def create
     @item = Item.new(item_params)
     if @item.save
