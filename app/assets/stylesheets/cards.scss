@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.wrapper{
+.wrapper__card{
   background-color: #f8f8f8;
   height: 100vh;
   width: 100vw;
@@ -15,12 +15,13 @@
   width: 214px;
 }
 
-span{
+span2{
   background-color: red;
   color: #fff;
+  margin-left: 3px;
 }
 
-.box{
+.card{
   height: 600px;
   width: 450px;
   margin: 40px auto;
@@ -35,19 +36,46 @@ span{
   }
   &__number{
     margin: 40px auto;
-    width: 190px;
+    width: 350px;
+    
+    &__number__field{
+      left: 0px;
+    }
+    .number{
+      height: 40px;
+      width: 93%;
+    }
   }
   &__date{
     margin: 40px auto;
-    width: 190px;
+    width: 350px;
+    
+    &__date__field{
+      float: left;
+    }
+    #exp_month,
+    #exp_year{
+      width: 30%;
+      height: 30px;
+    }
   }
   &__code{
     margin: 40px auto;
-    width: 190px;
+    width: 350px;
+    
+    .cvc{
+      height: 40px;
+      width: 93%;
+    }
   }
   &__name{
     margin: 40px auto;
-    width: 190px;
+    width: 350px;
+    
+    .name{
+      height: 40px;
+      width: 93%;
+    }
   }
   &__submit{
   margin: 50px auto;
