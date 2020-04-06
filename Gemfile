@@ -77,3 +77,8 @@ gem "font-awesome-sass"
 group :production do
   gem 'unicorn'
 end
+
+gem 'active_hash'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'jquery-rails'
