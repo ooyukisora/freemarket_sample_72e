@@ -4,7 +4,6 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-
   devise_scope :user do
     get 'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
@@ -12,7 +11,6 @@ Rails.application.routes.draw do
   end
 
   root "users#index"
-  resources :users, only: :show
 
   resources :cards, only: [:new, :show] do
     collection do
@@ -22,5 +20,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items, only: [:show]
+  resources :items
 end

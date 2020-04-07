@@ -79,3 +79,9 @@ group :production do
   gem 'unicorn'
   gem 'devise'
 end
+
+gem 'active_hash'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'jquery-rails'
+gem 'fog-aws'
