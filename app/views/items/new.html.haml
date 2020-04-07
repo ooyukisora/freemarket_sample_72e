@@ -1,0 +1,21 @@
+.listing_main
+  .listing_header
+    = image_tag 'http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg', class: 'listing_img'
+  .listing_body
+    %h2 商品情報を入力
+    = form_with model: @item, local: true do |f|
+      #image-box
+      = f.fields_for :images do |image|
+        .js-file_group{"data-index" => "#{image.index}"}
+          = image.file_field :img, class: 'js-file'
+          %br/
+          %span.js-remove 削除
+      = f.text_field :name, placeholder: :商品名
+      = f.text_area :text, placeholder: :商品説明
+      = f.number_field :price, placeholder: :値段
+      = f.collection_select :status, Condition.all, :name, :name, {}, prompt: "---"
+      = f.collection_select :delivery_fee, Burden.all, :name, :name, {}, prompt: "---"
+      = f.collection_select :shipping_day, Shipday.all, :name, :name, {}, prompt: "---"
+      = f.collection_select :from_area, Prefecture.all, :name, :name, {}, prompt: "---"
+      = f.submit '出品する', class: :form__btn
+%p image とtag は後日

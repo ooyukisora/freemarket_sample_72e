@@ -1,10 +1,11 @@
 $(document).on('turbolinks:load', ()=> {
   // 画像用のinputを生成する関数
-  const buildFileField = (index)=> {
-    const html = `<div data-index="${index}" class="js-file_group">
-    <input class="js-file" type="file" name="item[images_attributes][${index}][img]" id="item_images_attributes_${index}_img"><br>
-    <span class="js-remove">削除</span>
-  </div>`;
+  const buildFileField = (num)=> {
+    const html = `<input class="js-file" type="file" name="item[images_attributes][${num}][img]" id="item_images_attributes_$${num}_img>`;
+    return html;
+  }
+  const buildImg = (index, url)=> {
+    const haml = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
     return html;
   }
 
