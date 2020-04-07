@@ -14,7 +14,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       # t.references :category
       # t.references :address
       # t.references :image
-      # t.references :buyer
+      t.references :buyer
 
       t.timestamps
     end

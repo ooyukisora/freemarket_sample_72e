@@ -86,54 +86,22 @@
       .productHead
         = link_to '#' do
           %h3.title 新規投稿商品
+
       .productLists
-        .productLists__list
-          = link_to '#' do
-            %figure.productLists__list__img
-              = image_tag @images[0].image
-              -if @items[0].buyer_id?
-                .items-box_photo__sold
-                  #text SOLD
+        - @items.each do |item|
+          .productLists__list
+            = link_to '#' do
+              %figure.productLists__list__img
+                = image_tag item.images.find_by(item_id: item.id).img_url
+                -if item.buyer_id?
+                  .items-box_photo__sold
+                    #text SOLD
             .productLists__list__body
               %h3.productLists__list__body__name
-              = @items[0].name
+              = item.name
               .productLists__list__body__details
                 %ul
-                  %li= @items[0].price
-                  %li
-                    %i.fas.fa-star.likeIcon
-                    0
-                %p (税込)
-        .productLists__list
-          = link_to '#' do
-            %figure.productLists__list__img
-              = image_tag @images[1].image
-              -if @items[1].buyer_id?
-                .items-box_photo__sold
-                  #text SOLD
-            .productLists__list__body
-              %h3.productLists__list__body__name
-              = @items[1].name
-              .productLists__list__body__details
-                %ul
-                  %li= @items[1].price
-                  %li
-                    %i.fas.fa-star.likeIcon
-                    0
-                %p (税込)
-        .productLists__list
-          = link_to '#' do
-            %figure.productLists__list__img
-              = image_tag @images[2].image
-              -if @items[2].buyer_id?
-                .items-box_photo__sold
-                  #text SOLD
-            .productLists__list__body
-              %h3.productLists__list__body__name
-              = @items[2].name
-              .productLists__list__body__details
-                %ul
-                  %li= @items[2].price
+                  %li= item.price
                   %li
                     %i.fas.fa-star.likeIcon
                     0
@@ -147,53 +115,20 @@
           %h3.title アーカイバ
 
       .productLists
-        .productLists__list
-          = link_to '#' do
-            %figure.productLists__list__img
-              = image_tag @images[0].image
-              -if @items[0].buyer_id?
-                .items-box_photo__sold
-                  #text SOLD
+        - @items.each do |item|
+          .productLists__list
+            = link_to '#' do
+              %figure.productLists__list__img
+                = image_tag item.images.find_by(item_id: item.id).img_url
+                -if item.buyer_id?
+                  .items-box_photo__sold
+                    #text SOLD
             .productLists__list__body
               %h3.productLists__list__body__name
-              = @items[0].name
+              = item.name
               .productLists__list__body__details
                 %ul
-                  %li= @items[0].price
-                  %li
-                    %i.fas.fa-star.likeIcon
-                    0
-                %p (税込)
-        .productLists__list
-          = link_to '#' do
-            %figure.productLists__list__img
-              = image_tag @images[1].image
-              -if @items[1].buyer_id?
-                .items-box_photo__sold
-                  #text SOLD
-            .productLists__list__body
-              %h3.productLists__list__body__name
-              = @items[1].name
-              .productLists__list__body__details
-                %ul
-                  %li= @items[1].price
-                  %li
-                    %i.fas.fa-star.likeIcon
-                    0
-                %p (税込)
-        .productLists__list
-          = link_to '#' do
-            %figure.productLists__list__img
-              = image_tag @images[2].image
-              -if @items[2].buyer_id?
-                .items-box_photo__sold
-                  #text SOLD
-            .productLists__list__body
-              %h3.productLists__list__body__name
-              = @items[2].name
-              .productLists__list__body__details
-                %ul
-                  %li= @items[2].price
+                  %li= item.price
                   %li
                     %i.fas.fa-star.likeIcon
                     0

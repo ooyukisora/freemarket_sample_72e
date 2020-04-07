@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 
   def index
     @items = Item.all
-    @images = Image.all
   end
 
   def show
@@ -10,8 +9,5 @@ class UsersController < ApplicationController
 
   def destroy
   end
-  
-  def destroy
-    
-  end
+
 end

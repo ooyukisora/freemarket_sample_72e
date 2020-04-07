@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   root "users#index"
-
+  resources :users, only: :show
   resources :cards, only: [:new, :show] do
     collection do
       post 'show', to: 'cards#show'
