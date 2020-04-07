@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   end
 
   resources :items
+  resources :users, only: [:show]
 end

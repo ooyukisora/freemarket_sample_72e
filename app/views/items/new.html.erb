@@ -13,7 +13,6 @@
     <%= f.fields_for :images do |image| %>
       <div data-index="<%= image.index %>" class="js-file_group">
         <%= image.file_field :img, class: 'js-file' %><br>
-        <span class="js-remove">削除</span>
       </div>
     <% end %>
   </div>
