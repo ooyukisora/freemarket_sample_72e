@@ -27,4 +27,12 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
   
+  def show
+    @item = Item.find(params[:id])
+  end
+
+  def comfilm
+    
+  end
 end
+

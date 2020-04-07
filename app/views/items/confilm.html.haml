@@ -1,0 +1,57 @@
+
+.single-container
+  .single-container__header
+    .logo
+      = image_tag 'logo.png', alt: '', height: '60px', width: '210px', class: ''
+  .single-container__main
+    .single-container__main__buy
+      .single-container__main__buy__head
+        %h2 購入内容の確認
+      .single-container__main__buy__item
+        .single-container__main__buy__item__inner
+          .image
+          .detail
+            %p ギター 
+            %p ¥100 (税込) 送料込み
+      .single-container__main__buy__explantion
+        .form
+          .money
+            %h3 支払い金額
+            %h2 ¥100
+          .payment-method
+            .select
+              %p 支払い方法
+              = link_to '変更する'
+            .card-info
+              %p クレジットカード
+              
+              %p ************2020
+              
+              %p 有効期限 01/20
+            %h3 💳
+          .delivery-address
+            .l-select
+              %p 配送先
+              = link_to '変更する'
+            .location
+              %p 〒542-0076
+              %p 大阪府 大阪市 中央区 難波5町目 1-60 なんばスカイオ15階
+              %p テックキャンプ なんばスカイオ校
+          .attention
+            .attention__rules
+              %p 郵便局/コンビニ受取をご希望の方は、購入後、取引画面から受取場所変更をすることが可能です。出品者が発送作業を開始した後には受取場所変更ができませんので、早めに受取場所の変更を行ってください。
+            .attention__buy-button
+              = link_to '購入する'
+      
+  .single-container__footer
+    .single-container__footer__box
+      .links
+        %ul
+          %li<>
+            = link_to "プライバシーポリシー"
+          %li<>
+            = link_to "フリマ利用規約"
+          %li<>
+            = link_to "特定商取引に関する表記"
+        .small
+          ©︎FURIMA,inc.
