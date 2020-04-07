@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
-    # @location = current_user.address.prefecture
   end
   
   def create
