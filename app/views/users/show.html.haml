@@ -1,6 +1,5 @@
 .container
-  .header
-    ヘッダー差込
+  = render "top_header"
   .contents
     .contents__left
       .contents__left__profile
@@ -24,7 +23,7 @@
               = link_to "クレジットカードを登録する",'/cards/new'
           %li<>
             .contents__left__menulog-out
-              = link_to "ログアウト",'/users/sign_out'
+              = link_to "ログアウト", destroy_user_session_path, method: :delete
           %li<>
             .contents__left__menu__a
               = link_to "aaa",'#'
@@ -41,6 +40,5 @@
           出品中の商品
         .item
           出品中の商品
-  .footer__user
-    フッター差込
+  = render "footer_top"
 

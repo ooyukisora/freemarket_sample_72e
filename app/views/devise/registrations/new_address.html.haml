@@ -1,26 +1,26 @@
 .address
-  .header
-    = image_tag "/assets/logo.png", size:'200x60', class:'img'
+  .header_address
+    = image_tag 'http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg'
   .body
-    .contents
+    .contents_address
       %br/
       %h5 商品配送先住所登録
       %br/
       = form_for @address do |f|
-        .box
+        .box_address
           .box-label
             %label1 お名前(全角)
             %span.check 必須
             %br/
-            .input_area
+            .input_area_address
               = f.text_field :first_name
               = f.text_field :last_name
-        .box
+        .box_address
           .box-label
             %label1 お名前カナ(全角)
             %span1.check 必須
             %br/
-            .input_area
+            .input_area_address
               = f.text_field :first_name_kana
               = f.text_field :last_name_kana
         .box1

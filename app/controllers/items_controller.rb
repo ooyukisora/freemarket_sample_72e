@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  
+  before_action :set_item, except: [:index, :new, :create]
+
   def index
   end
 
@@ -23,4 +24,16 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :text, :price, :status, :delivery_fee, :shipping_day, :from_area, images_attributes: [:img]).merge(user_id: current_user.id)
   end
   
+  def set_item
+    @item = Item.find(params[:id])
+  end
+  
+  def show
+    @item = Item.find(params[:id])
+  end
+
+  def comfilm
+    
+  end
 end
+
