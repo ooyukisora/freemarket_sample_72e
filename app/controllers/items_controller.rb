@@ -3,10 +3,10 @@ class ItemsController < ApplicationController
 
   def index
   end
+  
   def new
     @item = Item.new
     @item.images.new
-    # @location = current_user.address.prefecture
   end
   
   def create
@@ -17,6 +17,10 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+
+  def show
+    @item = Item.find(params[:id])
+  end
   
   private
   def item_params
@@ -24,10 +28,6 @@ class ItemsController < ApplicationController
   end
   
   def set_item
-    @item = Item.find(params[:id])
-  end
-  
-  def show
     @item = Item.find(params[:id])
   end
 
