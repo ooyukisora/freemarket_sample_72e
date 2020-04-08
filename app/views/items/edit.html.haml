@@ -1,0 +1,6 @@
+.contents.row
+  .container
+    = form_with(model: @item, local: true) do |form|
+      %h3
+        編集する
+      = form.submit "SEND"
