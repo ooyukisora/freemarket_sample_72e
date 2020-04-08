@@ -1,3 +1,4 @@
+= render "users/top_header"
 .main
   .category-index
     .category
@@ -33,3 +34,4 @@
                         - children.children.each do |grandchild|
                           = link_to category_index_path(grandchild), class: "child_box__list" do
                             = grandchild.name
+= render "users/footer_top"

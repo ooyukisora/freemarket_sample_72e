@@ -352,8 +352,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ancestry
   active_hash
+  ancestry
   better_errors
   bootsnap (>= 1.1.0)
   byebug
