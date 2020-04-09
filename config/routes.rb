@@ -26,4 +26,5 @@ Rails.application.routes.draw do
     delete 'items/:id' => 'items#destroy'
   resources :category, only: [:index]
   resources :items
+  resources :users, only: [:show]
 end
