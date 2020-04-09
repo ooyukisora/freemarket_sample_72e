@@ -56,8 +56,8 @@
               %tbody
                 %tr
                   %th 出品者
-                  %td まだ
-                    
+                  %td 
+                    = @user.nickname
                 %tr
                   %th カテゴリー
                   %td
@@ -76,7 +76,8 @@
                     = @item.size
                 %tr
                   %th 商品の状態
-                  %td 未使用に近い
+                  %td
+                    = @item.status
                 %tr
                   %th 配送料の負担
                   %td 
@@ -84,7 +85,7 @@
                 %tr
                   %th 発送元の地域
                   %td
-                    
+                    = @address.prefecture
                 %tr
                   %th 発送日の目安
                   %td 
@@ -101,8 +102,9 @@
                     不適切な商品の通報
 
         - if user_signed_in? && current_user.id == @item.user_id 
-          = link_to '編集', "/items/#{@item.id}/edit", method: :get
-          = link_to '削除', "/items/#{@item.id}", method: :delete
+          .EditAndDestroy
+            = link_to '編集', "/items/#{@item.id}/edit", method: :get
+            = link_to '削除', "/items/#{@item.id}", method: :delete
         
         .commentBox
           .comments
@@ -132,9 +134,10 @@
             %strong
               %p  商品の購入、コメントの投稿には新規登録/ログインが必要です 
 
-      
-      - if user_signed_in? && current_user.id != @item.user_id 
-        = link_to '購入する'
+          
+          - if user_signed_in? && current_user.id != @item.user_id 
+            .buy-button
+              = link_to '購入確認画面へ', class:"buy-confilm"
 
       %ul.links
         %li

@@ -217,7 +217,25 @@
     border-radius: 100px;
     padding: 0;
   }
+  .buy-button{
+    line-height: 48px;
+    background: #3ccace;
+    border: 1px solid #3ccace;
+    width: 60%;
+    border-radius: 100px;
+    
+    margin: 15px auto 0;
+    a{
+      text-decoration: none;
+      font-size: 18px;
+      color: #fff;
+      height: 48px;
+      width: 60%;
+    }
+  }
 }
+
+
 
 .links {
   list-style: none;

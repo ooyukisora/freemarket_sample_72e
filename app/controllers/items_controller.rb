@@ -3,7 +3,10 @@ class ItemsController < ApplicationController
   end
   def show
     @item = Item.find(params[:id])
-    @user = @item.user
+    @user = User.find(@item.user_id)
+    @address = Address.find(@item.user_id)
+    #@image = Image.find(@item.image_id)
+
   end
 
   def comfilm
