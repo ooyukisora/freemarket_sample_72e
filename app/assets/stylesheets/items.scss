@@ -189,6 +189,55 @@
   }
 }
 
+
+.EditAndDestroy{
+  height: 150px;
+  background-color: white;
+  width: 100%;
+  margin: 15px 0 5px 0;
+  padding-top: 20px;
+  .edit-btn{
+    margin: 0 auto;
+    height: 50px;
+    width: 60%;
+    background-color: #3CCACE;
+    border-radius: 100px;
+    a{
+      text-decoration: none;
+      color: white;
+      line-height: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      display: block;
+      height: 50px;
+      width: 100%;
+      text-align: center;
+      transition: background-color .3s;
+    }
+    
+}
+  .delete-btn{
+    margin: 15px auto;
+    height: 50px;
+    width: 60%;
+    background-color: #3CCACE;
+    border-radius: 100px;
+    a{
+      text-decoration: none;
+      color: white;
+      line-height: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      display: block;
+      height: 50px;
+      width: 100%;
+      text-align: center;
+      transition: background-color .3s;
+    }
+  }
+}
+
+
 .commentBox {
   padding: 24px;
   background-color: #fff;
@@ -218,19 +267,22 @@
     padding: 0;
   }
   .buy-button{
-    line-height: 48px;
-    background: #3ccace;
-    border: 1px solid #3ccace;
+    margin: 15px auto;
+    height: 50px;
     width: 60%;
+    background-color: #3CCACE;
     border-radius: 100px;
-    
-    margin: 15px auto 0;
     a{
       text-decoration: none;
+      color: white;
+      line-height: 50px;
       font-size: 18px;
-      color: #fff;
-      height: 48px;
-      width: 60%;
+      font-weight: bold;
+      display: block;
+      height: 50px;
+      width: 100%;
+      text-align: center;
+      transition: background-color .3s;
     }
   }
 }

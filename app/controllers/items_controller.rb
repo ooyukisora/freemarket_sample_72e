@@ -17,10 +17,6 @@ class ItemsController < ApplicationController
     end
   end
   
-  private
-  def item_params
-    params.require(:item).permit(:name, :text, :price, :category_id, :status, :delivery_fee, :shipping_day, :from_area, images_attributes: [:img]).merge(user_id: current_user.id)
-  end
   
   def set_item
     @item = Item.find(params[:id])
@@ -30,7 +26,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @user = User.find(@item.user_id)
     @address = Address.find(@item.user_id)
-    #@image = Image.find(@item.image_id)
+    @image = Image.find(@item.image_id)
 
   end
 
@@ -52,9 +48,12 @@ class ItemsController < ApplicationController
     item.update(item_params)
   end
 
+
+
   private
   def item_params
-    params.require(:item).permit(:name)
+    params.require(:item).permit(:name, :text, :price, :category_id, :status, :delivery_fee, :shipping_day, :from_area, images_attributes: [:img]).merge(user_id: current_user.id)
   end
+
 end
 

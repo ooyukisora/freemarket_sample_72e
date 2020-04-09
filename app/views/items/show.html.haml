@@ -31,7 +31,7 @@
           .itemBox__body
             %ul
               %li
-                = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png'
+                
                 %ul
                   %li
                     = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png', height: '75', width: '75'
@@ -103,8 +103,10 @@
 
         - if user_signed_in? && current_user.id == @item.user_id 
           .EditAndDestroy
-            = link_to '編集', "/items/#{@item.id}/edit", method: :get
-            = link_to '削除', "/items/#{@item.id}", method: :delete
+            .edit-btn
+              = link_to '編集する', "/items/#{@item.id}/edit", method: :get
+            .delete-btn
+              = link_to '出品を削除する', "/items/#{@item.id}", method: :delete
         
         .commentBox
           .comments
