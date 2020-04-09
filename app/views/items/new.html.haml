@@ -1,21 +1,97 @@
 .listing_main
   .listing_header
-    = image_tag 'http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg', class: 'listing_img'
+    = image_tag 'http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg'
   .listing_body
     %h2 商品情報を入力
     = form_with model: @item, local: true do |f|
-      #image-box
-      = f.fields_for :images do |image|
-        .js-file_group{"data-index" => "#{image.index}"}
-          = image.file_field :img, class: 'js-file'
+      .listing_box
+        .listing_box_field
+          %label-item 出品画像
+          %span-item 必須
+          %br
+        .listing_previews_filed
+          #previews
+            - if @item.persisted?
+              - @item.images.each_with_index do |image, i|
+                = image_tag image.img.url, data: { index: i }, width: "100", height: '100'
+          #image-box
+            = f.fields_for :images do |image|
+              .js-file_group{"data-index" => "#{image.index}"}
+                = icon('fas', 'camera', class: 'image-box_icon')
+                = image.file_field :img, class: 'js-file'
+            %br/
+      .listing_name_box
+        .listing_name_box_field
+          %label-item 商品名
+          %span-item 必須
           %br/
-          %span.js-remove 削除
-      = f.text_field :name, placeholder: :商品名
-      = f.text_area :text, placeholder: :商品説明
-      = f.number_field :price, placeholder: :値段
-      = f.collection_select :status, Condition.all, :name, :name, {}, prompt: "---"
-      = f.collection_select :delivery_fee, Burden.all, :name, :name, {}, prompt: "---"
-      = f.collection_select :shipping_day, Shipday.all, :name, :name, {}, prompt: "---"
-      = f.collection_select :from_area, Prefecture.all, :name, :name, {}, prompt: "---"
-      = f.submit '出品する', class: :form__btn
-%p image とtag は後日
+        = f.text_field :name, placeholder: "40文字まで"
+        .listing_ex_box_field
+          %label-item 商品説明
+          %span-item 必須
+          %br/
+        = f.text_area :text, placeholder: "\n   商品の説明（必須 1000文字以内）\n      (色、素材、重さ、注意点など) \n\n   例） 2010年頃に1万円で購入したジャケットです。 ライトグレーで傷はありま\n   せん。合わせやすいのでおすすめです。\n\n"
+      .listing_details_box
+        .listing_details_box_field
+          %label-items 商品の詳細
+          %br/
+        .listing_details_box_category
+          %br/
+          %label-item カテゴリー
+          %span-item 必須
+          -# = f.colloection_select :category_id
+        -# .listing_details_box_size
+        -#   %label-item 商品のサイズ
+        -#   %sapn-item-which 任意
+        -#   %br/
+        -#   = = f.text_field :size, placeholder: "商品の大きさ"
+        .listing_details_box_status
+          %label-item 商品の状態
+          %span-item 必須
+          %br/
+        = f.collection_select :status, Condition.all, :name, :name, {}, prompt: "---"
+      .listing_delivary_box
+        .listing_delivary_box_field
+          %label-items 配送について
+          %br/
+        .listing_delivary_box_fee
+          %label-item 配送料の負担
+          %span-item 必須
+          %br/
+        = f.collection_select :delivery_fee, Burden.all, :name, :name, {}, prompt: "---"
+        .listing_delivary_box_area
+          %label-item 発送元の地域 
+          %span-item 必須
+          %br/
+        = f.collection_select :from_area, Prefecture.all, :name, :name, {}, prompt: "---"
+        .listing_delivary_box_shipping
+          %label-item 発送までの日数
+          %span-item 必須
+          %br/
+        = f.collection_select :shipping_day, Shipday.all, :name, :name, {}, prompt: "---"
+      .listing_price_box
+        .listing_price_box_field
+          %label-items 価格（¥300〜9,999,999）
+          %br/
+        .listing_price_box_area
+          .listing_price_box_price
+            %label-item 販売価格
+            %span-item 必須
+          .listing_price_input_area1
+            %span-items ¥
+            %input#price_calc.price_form-box{placeholder: "0", type: "number"}/
+        .listing_price_box_area2
+          .listing_price_fee
+            販売手数料(10%)
+          .listing_right_bar
+        .listing_price_box_area3
+          .product_profit
+            販売利益
+          = f.number_field :price, style: "display: none", id: "price"
+          .listing_right_bar_2
+        .listing_submit
+          = f.submit '出品する'
+          %br/
+          .listing_submit2
+            =link_to "戻る", root_path
+  .listing_footer
