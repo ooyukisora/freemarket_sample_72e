@@ -19,15 +19,7 @@
   <%= f.text_field :name, placeholder: :商品名 %>
   <%= f.text_area :text, placeholder: :商品説明 %>
   <%= f.number_field :price, placeholder: :値段 %>
-  <%= f.label :category_id, "カテゴリー" %>
-    <select id="parent">
-      <option value="0">---</option>
-        <% Category.where(ancestry: nil).each do |cat| %>
-          <option value="<%= cat.id %>"><%= cat.name %></option>
-        <% end %>
-    </select>
-    <select id="child"></select>
-  <%= f.collection_select :category_id, Category.all, :id, :name, prompt: "---", id: "grand_child" %>
+  
 
   <%= f.collection_select :status, Condition.all, :name, :name, {}, prompt: "---" %>
   <%= f.collection_select :delivery_fee, Burden.all, :name, :name, {}, prompt: "---" %>

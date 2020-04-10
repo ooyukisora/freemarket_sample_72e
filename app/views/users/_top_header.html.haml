@@ -16,7 +16,7 @@
     .header__nav
       %ul.listsLeft
         %li.listsLeft__item.listsLeft__item--first
-          = link_to 'カテゴリー', category_index_path, id: "catBtn"
+          -# = link_to 'カテゴリー', category_index_path, id: "catBtn"
           .category__box
             %ul.category__box__parent#parent_ul.hidden-parent
               - Category.where('ancestry IS NULL').each do |cat|

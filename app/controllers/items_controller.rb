@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create]
+  # before_action :set_item, except: [:index, :new, :create]
 
   def index
   end
+  
   def new
     @item = Item.new
     @item.images.new
@@ -18,15 +19,13 @@ class ItemsController < ApplicationController
   end
   
   
-  def set_item
-    @item = Item.find(params[:id])
-  end
+
   
   def show
     @item = Item.find(params[:id])
     @user = User.find(@item.user_id)
     @address = Address.find(@item.user_id)
-    @image = Image.find(@item.image_id)
+    # @image = Image.find(@item.image_id)
 
   end
 
@@ -52,8 +51,9 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :text, :price, :category_id, :status, :delivery_fee, :shipping_day, :from_area, images_attributes: [:img]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :text, :price, :status, :delivery_fee, :shipping_day, :from_area, images_attributes: [:img]).merge(user_id: current_user.id)
   end
 
+  
 end
 

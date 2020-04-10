@@ -20,11 +20,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items, only: [:show, :destroy, :edit, :update] do
-    resources :comments, only: :create
-  end
-    delete 'items/:id' => 'items#destroy'
-  resources :category, only: [:index]
   resources :items
+    
+    delete 'items/:id' => 'items#destroy'
+  # resources :category, only: [:index]
+  # resources :items
   resources :users, only: [:show]
 end
