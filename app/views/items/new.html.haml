@@ -1,0 +1,28 @@
+= form_with model: @item ,local: true do |f|
+  #previews
+    - if @item.persisted?
+      - @item.images.each_with_index do |image, i|
+        = image_tag image.img.url, data: { index: i }, width: "100", height: '100'
+  #image-box
+    = f.fields_for :images do |image|
+      .js-file_group{"data-index" => "#{image.index}"}
+        = image.file_field :img, class: 'js-file'
+        %br/
+        %span.js-remove 削除
+  = f.text_field :name, placeholder: :商品名
+  = f.text_area :text, placeholder: :商品説明
+  = f.number_field :price, placeholder: :値段
+  .listing-form-box
+    .listing-product-detail__category
+      = f.label 'カテゴリー', class: 'listing-default__label'
+      %span.listing-default--require 必須
+      .listing-select-wrapper
+        .listing-select-wrapper__box
+          = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+          %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
+
+  = f.collection_select :status, Condition.all, :name, :name, {}, prompt: "---"
+  = f.collection_select :delivery_fee, Burden.all, :name, :name, {}, prompt: "---"
+  = f.collection_select :shipping_day, Shipday.all, :name, :name, {}, prompt: "---"
+  = f.collection_select :from_area, Prefecture.all, :name, :name, {}, prompt: "---"
+  = f.submit '出品する', class: :form__btn
