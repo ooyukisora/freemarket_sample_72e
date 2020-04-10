@@ -49,23 +49,15 @@ ActiveRecord::Schema.define(version: 2020_04_06_064326) do
     t.string "name"
     t.integer "price"
     t.string "text"
-    t.string "brand"
-    t.string "size"
     t.string "status"
     t.string "delivery_fee"
     t.string "from_area"
     t.string "shipping_day"
     t.bigint "user_id"
     t.bigint "category_id"
-    t.bigint "address_id"
-    t.bigint "image_id"
-    t.bigint "buyer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_items_on_address_id"
-    t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["image_id"], name: "index_items_on_image_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
