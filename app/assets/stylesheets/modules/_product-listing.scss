@@ -51,7 +51,17 @@
         margin: auto;
         display: block;
         margin-top: 20px;
+        #previews{
+          display: block;
+        }
+      #image-box{
+      display: block;
+      
+      .js-file{
+        display: block;
       }
+      }
+    }
     }
     .listing_name_box{
       width: 100%;
