@@ -43,7 +43,7 @@
         width: 620px;
         margin: auto;
       }
-      .listing_previews_filed{
+      label{
         width: 620px;
         height: 150px;
         background-color: #f8f8f8;
@@ -51,17 +51,19 @@
         margin: auto;
         display: block;
         margin-top: 20px;
-        #previews{
-          display: block;
+        position: relative;
+        .fa-camera:before{
+          position: absolute;
+          left: 48%;
+          top: 48%;
+          font-size: 20px;
+          opacity: 0.7;
+          display: flex;
         }
-      #image-box{
-      display: block;
-      
-      .js-file{
-        display: block;
+        #image-box{
+          display: none;
+        }
       }
-      }
-    }
     }
     .listing_name_box{
       width: 100%;

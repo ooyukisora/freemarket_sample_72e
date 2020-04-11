@@ -4,12 +4,14 @@
   .listing_body
     %h2 商品情報を入力
     = form_with model: @item, local: true do |f|
+      %label
       .listing_box
         .listing_box_field
           %label-item 出品画像
           %span-item 必須
           %br
-        .listing_previews_filed
+        %label.listing_previews_filed
+          = icon('fas', 'camera')
           #previews
             - if @item.persisted?
               - @item.images.each_with_index do |image, i|
@@ -17,8 +19,7 @@
           #image-box
             = f.fields_for :images do |image|
               .js-file_group{"data-index" => "#{image.index}"}
-              = icon('fas', 'camera', class: 'imagebox_icon')
-              = image.file_field :img, class: 'js-file'
+              = image.file_field :img, class: 'js-file' 
             %br/
       .listing_name_box
         .listing_name_box_field
