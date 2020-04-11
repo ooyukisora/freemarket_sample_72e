@@ -8,14 +8,11 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :delivery_fee, null: false
       t.string :from_area, null: false
       t.string :shipping_day, null: false
-      t.references :user
+      t.references :user, null: false
+      t.references :category, null: false
+      t.references :buyer, null: false
       # t.string :brand
       # t.string :size 
-      # t.references :category
-      # t.references :address
-      # t.references :image
-      # t.references :buyer
-
       t.timestamps
     end
   end
