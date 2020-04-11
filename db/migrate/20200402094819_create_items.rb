@@ -11,7 +11,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :from_area
       t.string :shipping_day
       t.references :user
-      # t.references :category
+      t.references :category
       # t.references :address
       # t.references :image
       # t.references :buyer

@@ -62,8 +62,10 @@ ActiveRecord::Schema.define(version: 2020_04_07_072922) do
     t.string "from_area"
     t.string "shipping_day"
     t.bigint "user_id"
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
