@@ -15,7 +15,7 @@
   .listing_body{
     background-color: white;
     width: 700px;
-    height: 2200px;
+    height: 2300px;
     margin: auto;
       h2{
         width: 240px;
@@ -92,7 +92,7 @@
     .listing_details_box{
       padding: 40px;
       width: 100%;
-      height: 364px;
+      height: 500px;
       border-top: solid 2px #f8f8f8;
       .listing_details_box_field{
         color: #888888;
@@ -102,9 +102,20 @@
         width: 620px;
         margin: auto;
       }
-      // .listing_details_box_category{
-
-      // }
+      .listing_details_box_category{
+        .listing_details_box_category_field{
+          padding: 16px 0px ;
+        width: 620px;
+        margin: auto;
+        }
+        #parent_category,
+        #child_category,
+        #grandchild_category{
+          width: 620px;
+          height: 46px;
+          margin-bottom: 30px;
+        }
+      }
       .listing_details_box_status{
         padding: 16px 0px ;
         width: 620px;
