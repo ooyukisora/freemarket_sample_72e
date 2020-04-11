@@ -16,13 +16,19 @@
     .header__nav
       %ul.listsLeft
         %li.listsLeft__item.listsLeft__item--first
-          = link_to 'カテゴリー', '#', id: "catBtn"
+          = link_to 'カテゴリー', category_index_path, id: "catBtn"
+          .category__box
+            %ul.category__box__parent#parent_ul.hidden-parent
+              - Category.where('ancestry IS NULL').each do |cat|
+                %li.category__box__parent--list
+                  %h3
+                    = link_to "#{cat.name}", "/category/#{cat.id}","data-id": "#{cat.id}",class: "parent-category--list--item"
         %li.listsLeft__item
           = link_to 'ブランド', '#', id: "blandBtn"
       %ul.listsRight
         - if user_signed_in?
           %li.listsRight__item.listsRight__item--login
-            = link_to 'マイページ', user_path(current_user.id)
+            = link_to 'マイページ', user_session_path(current_user.id)
         - else
           %li.listsRight__item.listsRight__item--new
             = link_to '新規会員登録', new_user_registration_path

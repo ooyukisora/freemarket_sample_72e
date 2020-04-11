@@ -73,9 +73,17 @@ gem 'haml-rails'
 gem 'devise'
 gem 'payjp'
 gem "font-awesome-sass"
+gem 'ancestry'
+gem 'jquery-rails'
 gem 'better_errors'
 
 group :production do
   gem 'unicorn'
   gem 'devise'
 end
+
+gem 'active_hash'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'jquery-rails'
+gem 'fog-aws'
