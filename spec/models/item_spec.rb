@@ -46,4 +46,9 @@ describe Item do
     expect(item.errors.messages[:shipping_day]).to include("can't be blank")
   end
 
+  it "is invalid without a category_id" do
+    item = Item.new()
+    item.valid?
+    expect(item.errors.messages[:category_id]).to include("can't be blank")
+  end
 end
