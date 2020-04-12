@@ -32,10 +32,8 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
   end
+  
 
-  def comfilm
-    
-  end
 
   private
 
@@ -43,6 +41,14 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :text, :price, 
       :category_id, :status, :delivery_fee, :shipping_day, 
       :from_area, images_attributes: [:img]).merge(user_id: current_user.id).merge(buyer_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def comfilm
+    
   end
 
 end
