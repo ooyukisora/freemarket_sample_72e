@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_06_023141) do
+ActiveRecord::Schema.define(version: 2020_04_06_064326) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name", null: false
@@ -29,8 +29,16 @@ ActiveRecord::Schema.define(version: 2020_04_06_023141) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "img"
+    t.string "img", null: false
     t.bigint "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,17 +46,20 @@ ActiveRecord::Schema.define(version: 2020_04_06_023141) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.integer "price"
-    t.string "text"
-    t.string "size"
-    t.string "status"
-    t.string "delivery_fee"
-    t.string "from_area"
-    t.string "shipping_day"
-    t.bigint "user_id"
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.string "text", null: false
+    t.string "status", null: false
+    t.string "delivery_fee", null: false
+    t.string "from_area", null: false
+    t.string "shipping_day", null: false
+    t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
+    t.bigint "buyer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_items_on_buyer_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
