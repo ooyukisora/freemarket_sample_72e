@@ -1,4 +1,4 @@
-= form_with model: @item ,local: true do |f|
+= form_with model: @item, local: true do |f|
   #previews
     - if @item.persisted?
       - @item.images.each_with_index do |image, i|
