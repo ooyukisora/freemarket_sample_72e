@@ -7,11 +7,14 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
-    get '/users/sign_out' => 'users/registrations#destroy'
   end
 
   root "users#index"
-
+  resources :users, only: :show do
+    collection do
+      get 'logout'
+    end
+  end
   resources :cards, only: [:new, :show] do
     collection do
       post 'show', to: 'cards#show'

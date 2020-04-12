@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    
+    @items = Item.all
   end
 
   def show
@@ -9,8 +9,8 @@ class UsersController < ApplicationController
 
   def destroy
   end
-  
-  def destroy
-    
+
+  def logout
   end
+
 end
