@@ -20,7 +20,7 @@
             = f.fields_for :images do |image|
               .js-file_group{"data-index" => "#{image.index}"}
               = image.file_field :img, class: 'js-file' 
-            %br/
+              %br/
       .listing_name_box
         .listing_name_box_field
           %label-item 商品名
@@ -37,7 +37,6 @@
           %label-items 商品の詳細
           %br/
         .listing_details_box_category
-          -# = f.label 'カテゴリー', class: 'listing-default__label'
           .listing_details_box_category_field
             %br/
             %label-item カテゴリー
@@ -45,7 +44,6 @@
           .listing-select-wrapper
             .listing-select-wrapper__box
               = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-              -# %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
         .listing_details_box_status
           %label-item 商品の状態
           %span-item 必須
@@ -96,75 +94,3 @@
           .listing_submit2
             =link_to "戻る", root_path
   .listing_footer
-
-
-
-  -# #edit_item
-  -#   .item
-  -#     .item__title
-  -#       %h2 商品の情報を入力
-  -#     = form_for @item do |f|
-  -#       .item__img
-  -#         %ul
-  -#           %li
-  -#             %h3 出品画像
-  -#           %li
-  -#             .required__icon 必須
-  -#         .clearfix
-  -#         %p 最大10枚までアップロードできます
-
-  -#         = f.fields_for :item_images, @item.item_images.first do |image|
-  -#           .item__img__dropzone.clearfix
-  -#             #preview
-  -#             -# １〜５枚目プレビュー表示
-  -#             .item__img__dropzone__input
-  -#               = image.label :image, for: "upload-image" do
-  -#                 .input-area
-  -#                   = image.file_field :image_url, id: "upload-image", class: "upload-image", 'data-image': 0
-
-  -#                 .item__img__dropzone__input__description
-  -#                   .item__img__dropzone__input__description__text
-  -#                     ドラッグアンドドロップ
-  -#                     %br
-  -#                     またはクリックしてファイルをアップロード
-
-  -#           .item__img__dropzone2.clearfix
-  -#             #preview2
-  -#             -# ６〜１０枚目プレビュー表示
-  -#             .item__img__dropzone2__input2
-  -#               = image.label :image, for: "upload-image" do
-  -#                 .input-area
-  -#                   = image.file_field :image_url, id: "upload-image", class: "upload-image", 'data-image': 0
-  -#                 .item__img__dropzone2__input2__description
-  -#                   .item__img__dropzone2__input2__description__text
-  -#                     ドラッグアンドドロップ
-  -#                     %br
-  -#                     またはクリックしてファイルをアップロード
--# = form_with model: @item ,local: true do |f|
--#   #previews
--#     - if @item.persisted?
--#       - @item.images.each_with_index do |image, i|
--#         = image_tag image.img.url, data: { index: i }, width: "100", height: '100'
--#   #image-box
--#     = f.fields_for :images do |image|
--#       .js-file_group{"data-index" => "#{image.index}"}
--#         = image.file_field :img, class: 'js-file'
--#         %br/
--#         %span.js-remove 削除
--#   = f.text_field :name, placeholder: :商品名
--#   = f.text_area :text, placeholder: :商品説明
--#   = f.number_field :price, placeholder: :値段
--#   .listing-form-box
--#     .listing-product-detail__category
--#       = f.label 'カテゴリー', class: 'listing-default__label'
--#       %span.listing-default--require 必須
-      -# .listing-select-wrapper
-      -#   .listing-select-wrapper__box
-      -#     = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-      -#     %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
-
--#   = f.collection_select :status, Condition.all, :name, :name, {}, prompt: "---"
--#   = f.collection_select :delivery_fee, Burden.all, :name, :name, {}, prompt: "---"
--#   = f.collection_select :shipping_day, Shipday.all, :name, :name, {}, prompt: "---"
--#   = f.collection_select :from_area, Prefecture.all, :name, :name, {}, prompt: "---"
--#   = f.submit '出品する', class: :form__btn
