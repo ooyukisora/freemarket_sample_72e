@@ -11,10 +11,10 @@ $(function(){
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
                           <select>
-                          <i class='fas fa-chevron-down listing-select-wrapper__box--arrow-down'></i>
+                          
                         </div>
                       </div>`;
-    $('.listing-product-detail__category').append(childSelectHtml);
+    $('.listing_details_box_category').append(childSelectHtml);
   }
   function appendGrandchidrenBox(insertHTML){
     let grandchildSelectHtml = '';
@@ -24,10 +24,10 @@ $(function(){
                                   <option value="---" data-category="---">---</option>
                                   ${insertHTML}
                                 </select>
-                                <i class='fas fa-chevron-down listing-select-wrapper__box--arrow-down'></i>
+                                
                               </div>
                             </div>`;
-    $('.listing-product-detail__category').append(grandchildSelectHtml);
+    $('.listing_details_box_category').append(grandchildSelectHtml);
   }
   $('#parent_category').on('change', function(){
     let parentCategory = document.getElementById('parent_category').value;
@@ -55,7 +55,7 @@ $(function(){
       $('#grandchildren_wrapper').remove();
     }
   });
-  $('.listing-product-detail__category').on('change', '#child_category', function(){
+  $('.listing_details_box_category').on('change', '#child_category', function(){
     let childId = $('#child_category option:selected').data('category');
     if (childId != "---"){
       $.ajax({

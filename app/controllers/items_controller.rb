@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-  # before_action :set_item, except: [:index, :new, :create]
 
   def index
   end
@@ -40,8 +39,8 @@ class ItemsController < ApplicationController
     # @image = Image.find(@item.image_id)
     @parents = Category.where(ancestry:nil)
   end
-
-  def confilm
+  
+  def comfilm
     
   end
 
@@ -64,12 +63,15 @@ class ItemsController < ApplicationController
 
   
   private
-  # def set_item
-  #   @item = Item.find(params[:id])
-  # end
 
   def item_params
-    params.require(:item).permit(:name, :text, :price, :category_id, :status, :delivery_fee, :shipping_day, :from_area, images_attributes: [:img]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :text, :price, 
+      :category_id, :status, :delivery_fee, :shipping_day, 
+      :from_area, images_attributes: [:img]).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
   

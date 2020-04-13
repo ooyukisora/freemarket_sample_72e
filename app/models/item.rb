@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :images
   accepts_nested_attributes_for :images, allow_destroy: true
-  validates :name, :price, :text, :status,
-    :delivery_fee, :from_area, :shipping_day, presence: true
-    # belongs_to :category
+
+  validates :name, :price, :text, :status, 
+    :delivery_fee, :from_area, :shipping_day, :category_id, presence: true
 end
