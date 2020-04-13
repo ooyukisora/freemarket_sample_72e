@@ -24,7 +24,7 @@
                   %h3
                     = link_to "#{cat.name}", "/category/#{cat.id}","data-id": "#{cat.id}",class: "parent-category--list--item"
         %li.listsLeft__item
-          = link_to 'ブランド', '#', id: "blandBtn"
+          = link_to 'ブランド', confilm_items_path, id: "blandBtn"
       %ul.listsRight
         - if user_signed_in?
           %li.listsRight__item.listsRight__item--login
