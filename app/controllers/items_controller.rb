@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
- 
+  before_action :set_item, only:[:create, :show, :edit, :destroy]
 
   def index
   end
@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
+
     if @item.save
       redirect_to root_path
     else
@@ -34,7 +34,7 @@ class ItemsController < ApplicationController
 
   
   def show
-    @item = Item.find(params[:id])
+    
     @user = User.find(@item.user_id)
     @address = Address.find(@item.user_id)
   end
@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
+    
     if @item.destroy
       redirect_to root_path
     else
@@ -52,11 +52,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
+    
   end
 
   def update
-    @item = Item.find(params[:id])
+    
     @item.update(item_params)
     if @item.save
       redirect_to root_path
@@ -77,6 +77,8 @@ class ItemsController < ApplicationController
       :from_area, images_attributes: [:img]).merge(user_id: current_user.id)
   end
 
-  
+  def set_item
+    @item = Item.find(params[:id])
+  end
 end
 
