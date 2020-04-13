@@ -71,7 +71,16 @@
                   %td
                     -# - @parents.each do |grandchild|
                     -# -if @item.category_id == grandchild.id
-                    -# = link_to @item.category.parent.parent.name, '#'
+                    = link_to "#{@item.category.name}", '#'
+                      
+                    %br
+                    = link_to ">#{@item.category.name}", '#'
+                      
+                    %br
+                    = link_to ">#{@item.category.name}",'#'
+                    %br
+                    
+                    -# = link_to "#{@item.category.parent.parent.name}", '#'
                       
                     -# %br
                     -# = link_to ">#{@item.category.parent.name}", '#'
