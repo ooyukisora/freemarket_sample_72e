@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
 
   def create
+    #コメントした際の処理
     Comment.create(comment_params)
-    redirect_to "/items/#{comment.item.id}"
+    redirect_to show_items_path(@item)
   end
 
   private

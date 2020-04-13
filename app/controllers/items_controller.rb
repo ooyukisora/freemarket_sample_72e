@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action:set_item, only:[:show, :edit]
 
   def index
   end
@@ -33,11 +34,9 @@ class ItemsController < ApplicationController
 
   
   def show
-    @item = Item.find(params[:id])
+   
     @user = User.find(@item.user_id)
     @address = Address.find(@item.user_id)
-    # @image = Image.find(@item.image_id)
-    
   end
   
   def comfilm
@@ -45,15 +44,18 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    #商品出品を削除する処理
     item = Item.find(params[:id])
+
     item.destroy
   end
 
   def edit
-    @item = Item.find(params[:id])
+   
   end
 
   def update
+    #商品を編集する機能
     item = Item.find(params[:id])
     item.update(item_params)
   end
