@@ -39,14 +39,15 @@
                   
                 %ul
                   %li
-                  - if @item.images[1] 
-                    = image_tag @item.images[1].img_url, height: '75', width: '75'
+                    - if @item.images[1]
+                      = image_tag @item.images[1].img_url, height: '75', width: '75'
                   %li
                   - if @item.images[2]
                     = image_tag @item.images[2].img_url, height: '75', width: '75'
+                      = image_tag @item.images[2].img_url, height: '75', width: '75'
                   %li
-                  - if @item.images[3]
-                    = image_tag @item.images[3].img_url, height: '75', width: '75'
+                    - if @item.images[3]
+                      = image_tag @item.images[3].img_url, height: '75', width: '75'
           .itemBox__price
             %span
               = "¥#{@item.price.to_s}"
@@ -69,11 +70,19 @@
                 %tr
                   %th カテゴリー
                   %td
-                    
+                    -# - @parents.each do |grandchild|
+                    -# -if @item.category_id == grandchild.id
+                    = link_to @item.category.parent.parent.name '#'
+                      
                     %br
-                    = link_to '#{@product.category.parent.name}', '#'
+                    = link_to ">#{item.category.parent.name}" '#'
+                      
                     %br
-                    = link_to '#{@product.category.name}', '#'
+                    = link_to ">#{item.category.name}" '#'
+                    %br
+
+
+
                 %tr
                   %th ブランド
                   %td
