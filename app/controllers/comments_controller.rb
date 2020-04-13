@@ -1,9 +1,13 @@
 class CommentsController < ApplicationController
 
   def create
-    #コメントした際の処理
     Comment.create(comment_params)
-    redirect_to show_items_path(@item)
+    if comment.save
+      redirect_to show_items_path(@item)
+    else
+      render :new
+    end
+   
   end
 
   private

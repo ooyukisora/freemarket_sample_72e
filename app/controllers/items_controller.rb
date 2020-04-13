@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action:set_item, only:[:show, :edit]
+  before_action:set_item, only:[:show, :edit, :destroy, :update]
 
   def index
   end
@@ -34,30 +34,32 @@ class ItemsController < ApplicationController
 
   
   def show
-   
     @user = User.find(@item.user_id)
     @address = Address.find(@item.user_id)
   end
   
   def comfilm
-    
   end
 
   def destroy
-    #商品出品を削除する処理
-    item = Item.find(params[:id])
-
-    item.destroy
+    if  item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   def edit
-   
+  
   end
 
   def update
-    #商品を編集する機能
-    item = Item.find(params[:id])
     item.update(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
 
@@ -73,7 +75,7 @@ class ItemsController < ApplicationController
   end
 
   def set_item
-    @item = Item.find(params[:id])
+    item = Item.find(params[:id])
   end
 
   
