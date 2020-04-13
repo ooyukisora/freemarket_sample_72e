@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
     @user = User.find(@item.user_id)
     @address = Address.find(@item.user_id)
     # @image = Image.find(@item.image_id)
-    @parents = Category.where(ancestry:nil)
+    
   end
   
   def comfilm
