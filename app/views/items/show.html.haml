@@ -18,70 +18,89 @@
     %li
       %i.fas.fa-angle-right
     %li
-      %p product3
+      %p
+        = @item.name
 .main
   .showMain
     .contentLeftpp
     .contentRight
       .topContent
         .itemBox
-          %h2.itemBox__name product3
+          %h2.itemBox__name
+            = @item.name
           .itemBox__body
             %ul
               %li
-                = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png'
+            
+                -# - objects = @item.images
+                -# - objects.each.with_index do |object, index|
+                -#   = image_tag object.img_url
+                = image_tag @item.images[0].img_url
+                  
                 %ul
                   %li
-                    = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png', height: '75', width: '75'
+                    - if @item.images[1]
+                      = image_tag @item.images[1].img_url, height: '75', width: '75'
                   %li
-                    = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png', height: '75', width: '75'
+                    - if @item.images[2]
+                      = image_tag @item.images[2].img_url, height: '75', width: '75'
                   %li
-                    = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png', height: '75', width: '75'
+                    - if @item.images[3]
+                      = image_tag @item.images[3].img_url, height: '75', width: '75'
           .itemBox__price
             %span
-              ¥30000
+              = "¥#{@item.price.to_s}"
+              
             .itemBox__price--detail
               %span
                 (税込)
               %span
                 送料込み
           .itemDetaill
-            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaa
-            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            = @item.text
+            
           .table
             %table
               %tbody
                 %tr
                   %th 出品者
-                  %td hoge
+                  %td 
+                    = @user.nickname
                 %tr
                   %th カテゴリー
                   %td
-                    = link_to 'ベビー・キッズ', '#'
+                    = link_to "#{@item.category.name}", '#'
+                      
                     %br
-                    = link_to 'ベビー服(男女兼用)~95cm', '#'
+                    = link_to ">#{@item.category.name}", '#'
+                      
                     %br
-                    = link_to 'アウター', '#'
+                    = link_to ">#{@item.category.name}",'#'
+                    %br
                 %tr
                   %th ブランド
-                  %td シャネル
+                  %td
+                    
                 %tr
                   %th 商品のサイズ
-                  %td XXL
+                  %td 
+                    
                 %tr
                   %th 商品の状態
-                  %td 未使用に近い
+                  %td
+                    = @item.status
                 %tr
                   %th 配送料の負担
-                  %td 送料込み(出品者負担)
+                  %td 
+                    = @item.delivery_fee
                 %tr
                   %th 発送元の地域
                   %td
-                    = link_to '岩手県', '#'
+                    = @address.prefecture
                 %tr
                   %th 発送日の目安
-                  %td 4~7日で発送
+                  %td 
+                    = @item.shipping_day
           .optionalArea
             %ul
               %li#likeBtn.optionalBtn.likeBtn
@@ -92,12 +111,31 @@
                 = link_to '#' do
                   %i.fas.fa-flag
                     不適切な商品の通報
+
+        - if user_signed_in? && current_user.id == @item.user_id 
+          .EditAndDestroy
+            .edit-btn
+              = link_to '編集する', "/items/#{@item.id}/edit", method: :get
+            .delete-btn
+              = link_to '出品を削除する', "/items/#{@item.id}", method: :delete
+        
         .commentBox
+          .comments
+            - if @comments
+              - @comments.each do |comment|
+                %p
+                  %strong
+                    = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                    ：
+                  = comment.text
+
+
           %ul.commentBox__contents
-          %form.new_comment{action: "#", method: "post"}
-            %input{name: 'utf8', type: 'hidden', value: '✓'}
-            %input{type: 'hidden', name: 'authenticity_token', value: 'gSPUqFq58bpRFqcxJjrtSPEDsMjekWGYQkg+pPeMK8leu2XUgdCiCDZJ209wGqkoxX7OI5eQoWvlGrkxoZaaUg=='}
-            %textarea#comment_body{required: 'required', name: 'comment[body]'}
+          - if current_user
+            %form.new_comment{action: "#", method: "post"}
+              %input{name: 'utf8', type: 'hidden', value: '✓'}
+              %input{type: 'hidden', name: 'authenticity_token', value: 'gSPUqFq58bpRFqcxJjrtSPEDsMjekWGYQkg+pPeMK8leu2XUgdCiCDZJ209wGqkoxX7OI5eQoWvlGrkxoZaaUg=='}
+              %textarea#comment_body{required: 'required', name: 'comment[body]'}
             %p.noticeMsg
               相手のことを考え丁寧なコメントを心がけましょう。
               %br
@@ -105,6 +143,15 @@
             %button.commentBtn{name: 'button', type: 'submit'}
               %i.fas.fa-comment
                 コメントする
+          - else
+            %strong
+              %p  商品の購入、コメントの投稿には新規登録/ログインが必要です 
+
+          
+          - if user_signed_in? && current_user.id != @item.user_id 
+            .buy-button
+              = link_to '購入確認画面へ', class:"buy-confilm"
+
       %ul.links
         %li
           = link_to '#' do

@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     end
   end
 
+    
+    delete 'items/:id' => 'items#destroy'
   resources :users, only: [:show]
   resources :items do
     collection do
