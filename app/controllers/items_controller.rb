@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only:[:create, :show, :edit, :destroy]
+  before_action :set_item, only:[:show, :edit, :destroy]
 
   def index
   end
@@ -22,16 +22,13 @@ class ItemsController < ApplicationController
   end
 
   def create
-
+    @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
     else
       render :new
     end
   end
-  
-  
-
   
   def show
     
