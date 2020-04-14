@@ -30,9 +30,6 @@ class ItemsController < ApplicationController
     end
   end
   
-  
-
-  
   def show
     
     @user = User.find(@item.user_id)
