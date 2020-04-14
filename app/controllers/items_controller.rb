@@ -34,7 +34,6 @@ class ItemsController < ApplicationController
 
   
   def show
-    
     @user = User.find(@item.user_id)
     @address = Address.find(@item.user_id)
   end
