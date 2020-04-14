@@ -43,26 +43,34 @@
         width: 620px;
         margin: auto;
       }
-      label{
-        width: 620px;
-        height: 150px;
-        background-color: #f8f8f8;
-        border: dotted 2px lightgray;
-        margin: auto;
-        display: block;
-        margin-top: 20px;
-        position: relative;
-        .fa-camera:before{
-          position: absolute;
-          left: 48%;
-          top: 48%;
-          font-size: 20px;
-          opacity: 0.7;
-          display: flex;
-        }
-        #image-box{
-          display: none;
-        }
+      // label{
+      //   width: 620px;
+      //   height: 150px;
+      //   background-color: #f8f8f8;
+      //   border: dotted 2px lightgray;
+      //   margin: auto;
+      //   display: block;
+      //   margin-top: 20px;
+      //   position: relative;
+      //   .fa-camera:before{
+      //     position: absolute;
+      //     left: 48%;
+      //     top: 48%;
+      //     font-size: 20px;
+      //     opacity: 0.7;
+      //     display: flex;
+      //   }
+      //   #image-box{
+      //     display: none;
+      //   }
+      // }
+      .listing_image_form_fild{
+        height: 200px;
+        width: 100%;
+          .photo_img{
+            width: 100px;
+            height: 100px;
+          }
       }
     }
     .listing_name_box{

@@ -14,4 +14,6 @@ class Item < ApplicationRecord
 
   validates :name, :price, :text, :status, 
     :delivery_fee, :from_area, :shipping_day, :category_id, presence: true
+  
+  # validates :images, presence: true
 end
