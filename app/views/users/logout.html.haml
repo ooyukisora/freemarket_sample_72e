@@ -1,0 +1,11 @@
+.logout
+  .logout__header
+    .icon
+  .Main
+    .content
+      %br/
+      %h5 ログアウトしました。
+      %br/
+      = link_to "トップへ戻る", destroy_user_session_path, method: :delete
+      %br/
+  .logout__footer

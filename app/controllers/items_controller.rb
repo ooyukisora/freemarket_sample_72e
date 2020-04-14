@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
-  # before_action :set_item, except: [:index, :new, :create]
+  before_action :set_item, only:[:create, :show, :edit, :destroy]
 
   def index
   end
-
+  
   def new
     @item = Item.new
     @item.images.new
@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
+
     if @item.save
       redirect_to root_path
     else
@@ -30,22 +30,53 @@ class ItemsController < ApplicationController
     end
   end
   
+  
+
+  
   def show
-    @item = Item.find(params[:id])
+    
+    @user = User.find(@item.user_id)
+    @address = Address.find(@item.user_id)
+  end
+  
+  def comfilm
   end
 
-  def comfilm
+  def destroy
+    
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
+  end
+
+  def edit
     
   end
 
-  private
-  # def set_item
-  #   @item = Item.find(params[:id])
-  # end
-
-  def item_params
-    params.require(:item).permit(:name, :text, :price, :category_id, :status, :delivery_fee, :shipping_day, :from_area, images_attributes: [:img]).merge(user_id: current_user.id)
+  def update
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
+
+
+
+  
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :text, :price, 
+      :category_id, :status, :delivery_fee, :shipping_day, 
+      :from_area, images_attributes: [:img]).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 end
 
