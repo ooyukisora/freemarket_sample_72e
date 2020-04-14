@@ -131,18 +131,23 @@
 
 
           %ul.commentBox__contents
+          
           - if current_user
-            %form.new_comment{action: "#", method: "post"}
-              %input{name: 'utf8', type: 'hidden', value: '✓'}
-              %input{type: 'hidden', name: 'authenticity_token', value: 'gSPUqFq58bpRFqcxJjrtSPEDsMjekWGYQkg+pPeMK8leu2XUgdCiCDZJ209wGqkoxX7OI5eQoWvlGrkxoZaaUg=='}
-              %textarea#comment_body{required: 'required', name: 'comment[body]'}
-            %p.noticeMsg
-              相手のことを考え丁寧なコメントを心がけましょう。
-              %br
-              不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            %button.commentBtn{name: 'button', type: 'submit'}
-              %i.fas.fa-comment
-                コメントする
+            -# %form.new_comment{action: "#", method: "post"}
+            -#   %input{name: 'utf8', type: 'hidden', value: '✓'}
+            -#   %input{type: 'hidden', name: 'authenticity_token', value: 'gSPUqFq58bpRFqcxJjrtSPEDsMjekWGYQkg+pPeMK8leu2XUgdCiCDZJ209wGqkoxX7OI5eQoWvlGrkxoZaaUg=='}
+            -#   %textarea#comment_body{required: 'required', name: 'comment[body]'}
+            -# %p.noticeMsg
+            -#   相手のことを考え丁寧なコメントを心がけましょう。
+            -#   %br
+            -#   不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            -# %button.commentBtn{name: 'button', type: 'submit'}
+            -#   %i.fas.fa-comment
+            
+            = form_with(model: [@item, @comment], local: true) do |form|
+              = form.text_area :text, placeholder: "コメントする", rows: "2"
+              = form.submit "SEND"
+
           - else
             %strong
               %p  商品の購入、コメントの投稿には新規登録/ログインが必要です 

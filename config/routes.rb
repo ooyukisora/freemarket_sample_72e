@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'confilm'
     end
+    resources :comments, only: :create
   end
   
   resources :category, only: [:index]
