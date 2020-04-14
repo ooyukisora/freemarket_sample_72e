@@ -127,8 +127,11 @@
                   %strong
                     = link_to comment.user.nickname, "/users/#{comment.user_id}"
                     ：
-                  = comment.text
-
+                    = comment.text
+              %p.noticeMsg
+                相手のことを考え丁寧なコメントを心がけましょう。
+                %br
+                不快な言葉遣いなどは利用制限や退会処分となることがあります。
 
           %ul.commentBox__contents
           
@@ -144,9 +147,10 @@
             -# %button.commentBtn{name: 'button', type: 'submit'}
             -#   %i.fas.fa-comment
             
-            = form_with(model: [@item, @comment], local: true) do |form|
+            = form_with(model: [@item, @comment], local: true, id: "new_comment") do |form|
               = form.text_area :text, placeholder: "コメントする", rows: "2"
               = form.submit "SEND"
+            
 
           - else
             %strong
