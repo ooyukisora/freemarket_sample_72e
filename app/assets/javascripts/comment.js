@@ -3,7 +3,7 @@ $(function(){
     var html = `<p class=message>
                   <strong>
                     <a href=/users/${comment.user_id}>${comment.user_name}</a>
-                    ：
+                    さん：
                   </strong>
                   ${comment.text}
                 </p>`
