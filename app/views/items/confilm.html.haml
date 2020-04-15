@@ -42,6 +42,8 @@
               %p 郵便局/コンビニ受取をご希望の方は、購入後、取引画面から受取場所変更をすることが可能です。出品者が発送作業を開始した後には受取場所変更ができませんので、早めに受取場所の変更を行ってください。
             .attention__buy-button
               = link_to '購入する'
+              -# = form_tag(controller: :cards, action: :buy, method: :post) do
+              -#   %button 購入する
       
   .single-container__footer
     .single-container__footer__box

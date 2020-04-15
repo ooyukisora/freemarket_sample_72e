@@ -1,8 +1,10 @@
+  
 class ItemsController < ApplicationController
+  before_action :set_item, only:[:show, :edit, :destroy]
 
   def index
   end
-
+  
   def new
     @item = Item.new
     @item.images.new
@@ -30,11 +32,33 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    @user = User.find(@item.user_id)
+    @address = Address.find(@item.user_id)
   end
   
   def comfilm
+    @item = Item.find(params[:id])
+    @default_card_information = customer.cards.retrieve(@item.user_id.card.card_id)
+  end
+
+  def destroy
     
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   private
@@ -48,6 +72,4 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
 end
-
