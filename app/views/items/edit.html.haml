@@ -93,7 +93,8 @@
             %span-item 必須
           .listing_price_input_area1
             %span-items ¥
-            %input#price_calc.price_form-box{placeholder: "0", type: "number"}/
+            -# %input#price_calc.price_form-box{placeholder: "0", type: "number"}
+            = f.number_field :price, style: "", id: "price_calc"
         .listing_price_box_area2
           .listing_price_fee
             販売手数料(10%)
