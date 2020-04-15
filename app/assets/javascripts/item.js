@@ -1,106 +1,52 @@
+
+
 $(document).on('turbolinks:load', ()=> {
-  // 画像用のinputを生成する関数
   const buildFileField = (index)=> {
-    const html = `<input class="js-file" type="file" name="item[images_attributes][${index}][img]" id="item_images_attributes_${index}_img">`;
+    const html = `<div data-index="${index}" class="js-box">
+                    <input class="js-file" type="file"
+                    name="item[images_attributes][${index}][img]"
+                    id="item_images_attributes_${index}_img"><br>
+                    <div class="js-remove">削除</div>
+                  </div>`;
+    return html;
+  }
+  const buildImg = (index, url)=> {
+    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
     return html;
   }
 
-  // file_fieldのnameに動的なindexをつける為の配列
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+  
+  lastIndex = $('.js-box:last').data('index');
+  fileIndex.splice(0, lastIndex);
+  $('.hidden-destroy').hide();
 
   $('#image-box').on('change', '.js-file', function(e) {
-    // fileIndexの先頭の数字を使ってinputを作る
-    $('#image-box').append(buildFileField(fileIndex[0]));
-    fileIndex.shift();
-    // 末尾の数に1足した数を追加する
-    fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
+    const targetIndex = $(this).parent().data('index');
+    const file = e.target.files[0];
+    const blobUrl = window.URL.createObjectURL(file);
+    if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
+      img.setAttribute('img', blobUrl);
+    } else {  
+      $('#previews').append(buildImg(targetIndex, blobUrl));
+      if ($('.js-file').length < 4) $('#image-box').append(buildFileField(fileIndex[0]));
+      fileIndex.shift();
+      fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
+    }
   });
 
   $('#image-box').on('click', '.js-remove', function() {
     $(this).parent().remove();
-    // 画像入力欄が0個にならないようにしておく
-    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+    const targetIndex = $(this).parent().data('index')
+    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+    if (hiddenCheck) hiddenCheck.prop('checked', true);
+    
+    $(`img[data-index="${targetIndex}"]`).remove();
+    $('#image-box').append(buildFileField(fileIndex[targetIndex]));
+
   });
 });
 
-// $(function(){
-
-//   $('.file_field1').on('change', function(e){
-//     var file = e.target.files[0];
-//     var reader = new FileReader();
-//     reader.onload = (function(e){
-//       var ar = new Uint8Array(reader.result);  
-//       $(".img_box1").append($("<img class = photo_img>").attr("src", e.target.result));
-//   })
-//   reader.readAsDataURL(file);
-// })
-
-//   $('.file_field2').on('change', function(e){
-//     var file = e.target.files[0];
-//     var reader = new FileReader();
-//     reader.onload = (function(e){
-//       var ar = new Uint8Array(reader.result);  
-//       $(".img_box2").append($("<img class = photo_img>").attr("src", e.target.result));
-//   })
-//   reader.readAsDataURL(file);
-//   })
-
-//   $('.file_field3').on('change', function(e){
-//     var file = e.target.files[0];
-//     var reader = new FileReader();
-//     reader.onload = (function(e){
-//       var ar = new Uint8Array(reader.result);  
-//       $(".img_box3").append($("<img class = photo_img>").attr("src", e.target.result));
-//   })
-//   reader.readAsDataURL(file);
-//   })
-
-//   $('.file_field4').on('change', function(e){
-//     var file = e.target.files[0];
-//     var reader = new FileReader();
-//     reader.onload = (function(e){
-//       var ar = new Uint8Array(reader.result);  
-//       $(".img_box4").append($("<img class = photo_img>").attr("src", e.target.result));
-//   })
-//   reader.readAsDataURL(file);
-//   })
-
-//   $('.file_field5').on('change', function(e){
-//     var file = e.target.files[0];
-//     var reader = new FileReader();
-//     reader.onload = (function(e){
-//       var ar = new Uint8Array(reader.result);  
-//       $(".img_box5").append($("<img class = photo_img>").attr("src", e.target.result));
-//   })
-//   reader.readAsDataURL(file);
-//   })
-
-//   $('.remove_btn1').on('click', function(){
-//     $('#image').val('');
-//     $('.img_box1').html('');
-//   })
-
-//   $('.remove_btn2').on('click', function(){
-//     $('#image2').val('');
-//     $('.img_box2').html('');
-//   })
-
-//   $('.remove_btn3').on('click', function(){
-//     $('#image3').val('');
-//     $('.img_box3').html('');
-//   })
-
-//   $('.remove_btn4').on('click', function(){
-//     $('#image4').val('');
-//     $('.img_box4').html('');
-//   })
-
-//   $('.remove_btn5').on('click', function(){
-//     $('#image5').val('');
-//     $('.img_box5').html('');
-//   })
-
-// })
 
 $(function(){
   $('#price_calc').on('input', function(){   //リアルタイムで表示したいのでinputを使う｡入力の度にイベントが発火するようになる｡

@@ -10,57 +10,14 @@
           %label-item 出品画像
           %span-item 必須
           %br
-        %label.listing_previews_filed
-          = icon('fas', 'camera')
-          #previews
-            - if @item.persisted?
-              - @item.images.each_with_index do |image, i|
-                = image_tag image.img.url, data: { index: i }, width: "100", height: '100'
+        .listing_previews_filed
           #image-box
-            = f.fields_for :images do |image|
-              .js-file_group{"data-index" => "#{image.index}"}
-              = image.file_field :img, class: 'js-file' 
-              %br/
-
-        -# .listing_image_form_fild
-        -#   = f.fields_for :images do |i|
-        -#     .img_box_boxs
-        -#       .img_box1
-        -#       -# .img_box2
-        -#       -# .img_box3
-        -#       -# .img_box4
-        -#       -# .img_box5
-        -#     .photo_form_box
-        -#       .photo_display1
-        -#         = i.label :img, class: "image_label1", for: "image", id: "photo"  do
-        -#           = i.file_field :img, name: "item[photos_attributes][0][img]", multipart: true, class: "file_field1", id: "image", style: "display: none"
-        -#           選択
-        -#         .remove_btn1
-        -#           削除
-              -# .photo_display2
-              -#   = i.label  :img, class: "image_label2", for: "image2", id: "photo2" do
-              -#     = i.file_field :img, name: "item[photos_attributes][1][img]", multipart: true, class: "file_field2", id: "image2", style: "display: none"
-              -#     選択
-              -#   .remove_btn2
-              -#     削除
-              -# .photo_display3
-              -#   = i.label :img, class: "image_label3", for: "image3", id: "photo3" do
-              -#     = i.file_field :img, name: "item[photos_attributes][2][img]", multipart: true, class: "file_field3", id: "image3", style: "display: none"
-              -#     選択
-              -#   .remove_btn3
-              -#     削除
-              -# .photo_display4
-              -#   = i.label :img, class: "image_label4", for: "image4", id: "photo4" do
-              -#     = i.file_field :img, name: "item[photos_attributes][3][img]", multipart: true, class: "file_field4", id: "image4", style: "display: none"
-              -#     選択
-              -#   .remove_btn4
-              -#     削除
-              -# .photo_display5
-              -#   = i.label :img, class: "image_label5", for: "image5", id: "photo5" do
-              -#     = i.file_field :img, name: "item[photos_attributes][4][img]", multipart: true, class: "file_field5", id: "image5", style: "display: none"
-              -#     選択
-              -#   .remove_btn5
-              -#     削除
+            #previews
+            = f.fields_for :images do |i|
+              .js-box{data: { index: i.index }}
+                = i.file_field :img, class: "js-file"
+                %br/
+                %span.js-remove 削除
       .listing_name_box
         .listing_name_box_field
           %label-item 商品名

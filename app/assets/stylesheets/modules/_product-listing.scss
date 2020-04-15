@@ -43,7 +43,8 @@
         width: 620px;
         margin: auto;
       }
-      // label{
+      
+      // .listing_preview_field{
       //   width: 620px;
       //   height: 150px;
       //   background-color: #f8f8f8;
@@ -60,18 +61,25 @@
       //     opacity: 0.7;
       //     display: flex;
       //   }
-      //   #image-box{
-      //     display: none;
+        // .js-file{
+        //   display: none;
+        // }
+      // }
+      // .listing_image_form_fild{
+      //   height: 200px;
+      //   width: 100%;
+      //     .photo_img{
+      //       width: 100px;
+      //       height: 100px;
+      //     }
+      // }
+      // .js-box{
+      //   display: flex;
+      //   #previws{
+          
       //   }
       // }
-      .listing_image_form_fild{
-        height: 200px;
-        width: 100%;
-          .photo_img{
-            width: 100px;
-            height: 100px;
-          }
-      }
+      
     }
     .listing_name_box{
       width: 100%;
