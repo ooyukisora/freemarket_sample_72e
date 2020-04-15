@@ -123,15 +123,15 @@
           .comments
             - if @comments
               - @comments.each do |comment|
-                %p
+                %p.message
                   %strong
                     = link_to comment.user.nickname, "/users/#{comment.user_id}"
                     ：
                     = comment.text
-              %p.noticeMsg
-                相手のことを考え丁寧なコメントを心がけましょう。
-                %br
-                不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          %p.noticeMsg
+            相手のことを考え丁寧なコメントを心がけましょう。
+            %br
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
 
           %ul.commentBox__contents
           
@@ -148,8 +148,8 @@
             -#   %i.fas.fa-comment
             
             = form_with(model: [@item, @comment], local: true, id: "new_comment") do |form|
-              = form.text_area :text, placeholder: "コメントする", rows: "2"
-              = form.submit "SEND"
+              = form.text_area :text, placeholder: "", rows: "２",class: 'textbox'
+              = form.submit "コメントする", class: 'form__submit'
             
 
           - else

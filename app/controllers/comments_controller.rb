@@ -2,20 +2,14 @@ class CommentsController < ApplicationController
 
   def create
     item = Item.find(params[:item_id])
+  
     @comment = item.comments.build(comment_params)
+    @comment.save
     @comment.user_id = current_user.id
     respond_to do |format|
-      format.html { redirect_to items_path(params[:item_id])  }
-      format.json
+      format.html { redirect_to items_path(params[:item_id]) , notice: "コメントを送信しました" }
+      format.json 
     end
-    # if @comment.save
-    #   flash[:success] = "コメントしました"
-    #   redirect_back(fallback_location: root_path)
-    # else
-    #   flash[:success] = "コメントできませんでした"
-    #   redirect_back(fallback_location: root_path)
-    # end
-  
   end
 
   private
