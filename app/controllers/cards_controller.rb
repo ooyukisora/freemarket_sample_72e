@@ -29,18 +29,18 @@ class CardsController < ApplicationController
       redirect_to action: "new"
     else
       customer = Payjp::Customer.create(
+      # payjp上の表示
       description: '登録テスト', #なくてもOK
       email: current_user.email, #なくてもOK
-      card: params['payjp-token'],
+      card: params['payjp-token'], #必要
       metadata: {user_id: current_user.id} #なくてもOK
       )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to controller: "users", action: "show"
-        # flash[:notice] = 'クレジットカードの登録が完了しました'
+        # クレジットカード登録成功時、マイページへ遷移
+        redirect_to controller: "users", action: "show", id: current_user.id
       else
         redirect_to action: "pay"
-        # flash[:alert] = 'クレジットカード登録に失敗しました'
       end
     end
   end
