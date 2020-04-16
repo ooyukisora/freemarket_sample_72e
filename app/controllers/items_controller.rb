@@ -34,6 +34,8 @@ class ItemsController < ApplicationController
     
     @user = User.find(@item.user_id)
     @address = Address.find(@item.user_id)
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
   
   def comfilm
@@ -67,6 +69,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
+    
     params.require(:item).permit(:name, :text, :price, 
       :category_id, :status, :delivery_fee, :shipping_day, 
       :from_area, images_attributes: [:img]).merge(user_id: current_user.id)
