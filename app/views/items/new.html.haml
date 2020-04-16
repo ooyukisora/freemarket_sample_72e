@@ -10,14 +10,13 @@
           %label-item 出品画像
           %span-item 必須
           %br
-        .listing_previews_filed
-          #image-box
-            #previews
-            = f.fields_for :images do |i|
-              .js-box{data: { index: i.index }}
-                = i.file_field :img, class: "js-file"
-                %br/
-                %span.js-remove 削除
+        .listing_previews_field_boxs{style: "display: flex"}
+        .listing_previews_filed{style: "display: flex"}
+          %label-view-function 画像を追加する
+      #image-box
+        #previews
+          = f.fields_for :images do |i|
+            = i.file_field :img, class: "js-file",data: { index: i.index } 
       .listing_name_box
         .listing_name_box_field
           %label-item 商品名
