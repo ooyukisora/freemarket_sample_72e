@@ -254,3 +254,16 @@
     background-color: #f8f8f8;
   }
 }
+
+textarea {
+  resize: none;
+}
+
+.category-wrapper-box {
+  margin-top: 20px;
+  & select {
+    width: 620px;
+    height: 46px;
+    margin-bottom: 30px;
+  }
+}
