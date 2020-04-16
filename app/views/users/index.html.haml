@@ -90,7 +90,7 @@
       .productLists
         - @items.each do |item|
           .productLists__list
-            = link_to '#' do
+            = link_to "/items/#{item.id}" do
               %figure.productLists__list__img
                 = image_tag item.images.find_by(item_id: item.id).img_url
                 -if item.buyer_id?
