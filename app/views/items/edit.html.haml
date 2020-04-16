@@ -35,21 +35,23 @@
       .listing_details_box
         .listing_details_box_field
           %label-items 商品の詳細
+          %br/
         .listing_details_box_category
           .listing_details_box_category_field
-        .wrapper.category-wrapper
-          %label-item カテゴリー
-          %span-item 必須
-          .category-wrapper-box
-            .category-wrapper-select
-              .category-wrapper-select__box
+            %br/
+            %label-item カテゴリー
+            %span-item 必須
+            .listing-select-wrapper
+              .listing-select-wrapper__box
                 = f.select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, { class: 'category-wrapper__category form-control', id: 'parent_category'}
             .category-wrapper-select#children_wrapper
-              .category-wrapper-select__box
-                = f.select :child_id, options_for_select(@category_children_array.map{|c| [c.name, c.id, {data:{category: c.id}}]}, {prompt: "---", selected: @item.category.parent.id}),{}, {class: 'category-wrapper__category form-control', id: 'child_category'}
+              .listing-select-wrapper__box
+                = f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: 'category-wrapper__category form-control', id: 'child_category'}
             .category-wrapper-select#grandchildren_wrapper
-              .category-wrapper-select__box
-                = f.select :category_id, options_for_select(@category_grandchildren_array.map{|c| [c.name, c.id, {data:{category: c.id}}]}, {prompt: "---", selected: @item.category.id}),{}, {class: 'category-wrapper__category form-control', id: 'grandchild_category'}
+              .listing-select-wrapper__box
+                = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{}, {class: 'category-wrapper__category form-control', id: 'grandchild_category'}
+        
+                
         .listing_details_box_status
           %label-item 商品の状態
           %span-item 必須
@@ -84,7 +86,8 @@
             %span-item 必須
           .listing_price_input_area1
             %span-items ¥
-            %input#price_calc.price_form-box{placeholder: "0", type: "number"}/
+            -# %input#price_calc.price_form-box{placeholder: "0", type: "number"}
+            = f.number_field :price, style: "", id: "price_calc"
         .listing_price_box_area2
           .listing_price_fee
             販売手数料(10%)

@@ -16,6 +16,7 @@ $(document).on('turbolinks:load', ()=> {
   // 既に使われているindexを除外
   lastIndex = $('.js-file_group:last').data('index');
   fileIndex.splice(0, lastIndex);
+  $('.hidden-destroy').hide();
 
   $('.hidden-destroy').hide();
 
