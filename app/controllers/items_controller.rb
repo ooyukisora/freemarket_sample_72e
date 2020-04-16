@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only:[:show, :edit, :destroy]
 
   def index
   end
-
+  
   def new
     @item = Item.new
     @item.images.new
@@ -27,20 +28,50 @@ class ItemsController < ApplicationController
       
     else
       redirect_to new_item_path
+      
     end
   end
-
+  
   def show
-    @item = Item.find(params[:id])
+    
+    @user = User.find(@item.user_id)
+    @address = Address.find(@item.user_id)
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
   
   def comfilm
+  end
+
+  def destroy
+    
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
+  end
+
+  def edit
     
   end
 
+  def update
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+
+
+
+  
   private
 
   def item_params
+    
     params.require(:item).permit(:name, :text, :price, 
       :category_id, :status, :delivery_fee, :shipping_day, 
       :from_area, images_attributes: [:img]).merge(user_id: current_user.id)
@@ -49,6 +80,5 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
 end
 

@@ -73,6 +73,7 @@
         display: flex;
         justify-content: center;
         margin-top: 10px;
+        width: 100%;
         & li {
           width: 25%;
           margin: 0 10px 0 0;
@@ -189,11 +190,83 @@
   }
 }
 
+
+.EditAndDestroy{
+  height: 150px;
+  background-color: white;
+  width: 100%;
+  margin: 15px 0 5px 0;
+  padding-top: 20px;
+  .edit-btn{
+    margin: 0 auto;
+    height: 50px;
+    width: 60%;
+    background-color: #3CCACE;
+    border-radius: 100px;
+    a{
+      text-decoration: none;
+      color: white;
+      line-height: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      display: block;
+      height: 50px;
+      width: 100%;
+      text-align: center;
+      transition: background-color .3s;
+    }
+    
+}
+  .delete-btn{
+    margin: 15px auto;
+    height: 50px;
+    width: 60%;
+    background-color: #3CCACE;
+    border-radius: 100px;
+    a{
+      text-decoration: none;
+      color: white;
+      line-height: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      display: block;
+      height: 50px;
+      width: 100%;
+      text-align: center;
+      transition: background-color .3s;
+    }
+  }
+}
+
+
 .commentBox {
   padding: 24px;
   background-color: #fff;
   margin: 10px 0;
   text-align: center;
+  .comments{
+    width: 652px;
+    background-color:#f8f8f8;
+    height: 100%;
+    padding: 10px 10px 10px 0;
+    min-height: 50px;
+    .message{
+      text-align: left;
+      padding-right: 10px;
+      margin: 10px;
+
+      background-color: #fff;
+      border-radius: 5px;
+      p{
+        padding-right: 10px;
+      }
+      a{
+      color: #3ccace;
+      text-decoration: none;
+      font-weight: bolder;
+      }
+    }
+  }
   & #comment_body {
     width: 100%;
     min-height: 104px;
@@ -207,7 +280,19 @@
     margin: 10px 0;
     text-align: left;
   }
-  & .commentBtn {
+  textarea{
+    width: 652px;
+    height: 150px;
+    background-color: #f8f8f8;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 104px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  & .form__submit {
     line-height: 48px;
     background: #3ccace;
     border: 1px solid #3ccace;
@@ -216,8 +301,30 @@
     font-size: 18px;
     border-radius: 100px;
     padding: 0;
+    
+  }
+  .buy-button{
+    margin: 15px auto;
+    height: 50px;
+    width: 60%;
+    background-color: #3CCACE;
+    border-radius: 100px;
+    a{
+      text-decoration: none;
+      color: white;
+      line-height: 50px;
+      font-size: 18px;
+      font-weight: bold;
+      display: block;
+      height: 50px;
+      width: 100%;
+      text-align: center;
+      transition: background-color .3s;
+    }
   }
 }
+
+
 
 .links {
   list-style: none;
@@ -254,3 +361,7 @@
   clear: both;
 }
 
+
+.message{
+  
+}
