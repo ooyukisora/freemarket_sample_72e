@@ -26,10 +26,8 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
-      
     else
       redirect_to new_item_path
-      
     end
   end
   
@@ -40,6 +38,7 @@ class ItemsController < ApplicationController
   end
   
   def confilm
+    @address = Address.find(@item.user_id)
     card = Card.where(user_id: current_user.id).first
     if card.blank?
       #登録された情報がない場合にカード登録画面に移動
@@ -54,7 +53,6 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    
     if @item.destroy
       redirect_to root_path
     else
@@ -63,7 +61,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update
@@ -73,15 +70,10 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-
-
-
-
   
   private
 
   def item_params
-    
     params.require(:item).permit(:name, :text, :price, 
       :category_id, :status, :delivery_fee, :shipping_day, 
       :from_area, images_attributes: [:img]).merge(user_id: current_user.id)
