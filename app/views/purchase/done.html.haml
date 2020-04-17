@@ -1,7 +1,21 @@
-%h2 購入が完了しました！
-%p=@item.name
-%p=@item.price
-(送料込み)
-%br
-%br
-= link_to "トップへ戻る", root_path
+.done
+  .done__header
+    .icon
+  .Main
+    .content
+      %br
+      %h5 購入が完了しました！
+      %br
+      .image
+        = image_tag @item.images[0].img_url
+      .info
+        %br
+        %p= @item.name
+        %br
+        %p= "¥#{@item.price} (送料込み)"
+        %br
+        %br
+        %br
+    = link_to "トップへ戻る", root_path
+
+  .done__footer

@@ -146,12 +146,12 @@
           - else
             %strong
               %p  商品の購入、コメントの投稿には新規登録/ログインが必要です 
-
-          
+          %br
+          %br
           - if user_signed_in? && current_user.id != @item.user_id && @item.buyer_id == nil
             .buy-button
               = form_tag("/items/confilm/#{@item.id}", method: :get, id: @item.id) do
-                %button 購入確認画面へ
+                %button.buy 購入確認画面へ
 
       %ul.links
         %li
