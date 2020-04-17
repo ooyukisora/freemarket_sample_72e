@@ -25,16 +25,13 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
-      
     else
       redirect_to new_item_path
-      
     end
   end
   
   def show
     @user = User.find(@item.user_id)
-    # @address = Address.find(@item.user_id)
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
   end
@@ -43,11 +40,10 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    
     if @item.destroy
       redirect_to root_path
     else
-      render :show
+      redirect_to new_item_path
     end
   end
 
@@ -78,7 +74,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to root_path
     else
-      render :edit
+      render :new
     end
   end
 
@@ -89,7 +85,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    
     params.require(:item).permit(:name, :text, :price, 
       :category_id, :status, :delivery_fee, :shipping_day, 
       :from_area, images_attributes: [:img, :_destroy, :id]).merge(user_id: current_user.id)
