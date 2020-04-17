@@ -244,6 +244,29 @@
   background-color: #fff;
   margin: 10px 0;
   text-align: center;
+  .comments{
+    width: 652px;
+    background-color:#f8f8f8;
+    height: 100%;
+    padding: 10px 10px 10px 0;
+    min-height: 50px;
+    .message{
+      text-align: left;
+      padding-right: 10px;
+      margin: 10px;
+
+      background-color: #fff;
+      border-radius: 5px;
+      p{
+        padding-right: 10px;
+      }
+      a{
+      color: #3ccace;
+      text-decoration: none;
+      font-weight: bolder;
+      }
+    }
+  }
   & #comment_body {
     width: 100%;
     min-height: 104px;
@@ -257,7 +280,19 @@
     margin: 10px 0;
     text-align: left;
   }
-  & .commentBtn {
+  textarea{
+    width: 652px;
+    height: 150px;
+    background-color: #f8f8f8;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 104px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  & .form__submit {
     line-height: 48px;
     background: #3ccace;
     border: 1px solid #3ccace;
@@ -266,6 +301,7 @@
     font-size: 18px;
     border-radius: 100px;
     padding: 0;
+    
   }
   .buy-button{
     margin: 15px auto;
@@ -325,3 +361,7 @@
   clear: both;
 }
 
+
+.message{
+  
+}

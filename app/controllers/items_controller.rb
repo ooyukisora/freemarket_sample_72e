@@ -25,17 +25,18 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
+      
     else
-      render :new
+      redirect_to new_item_path
+      
     end
   end
   
-  
-
-  
   def show
     @user = User.find(@item.user_id)
-    @address = Address.find(@item.user_id)
+    # @address = Address.find(@item.user_id)
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
   
   def comfilm
@@ -88,6 +89,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
+    
     params.require(:item).permit(:name, :text, :price, 
       :category_id, :status, :delivery_fee, :shipping_day, 
       :from_area, images_attributes: [:img, :_destroy, :id]).merge(user_id: current_user.id)
