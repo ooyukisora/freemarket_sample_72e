@@ -8,6 +8,7 @@ class User < ApplicationRecord
         :last_name_kana, :birthday, presence: true
 
       has_one :address
+      has_many :comments
       has_many :items
 
   has_many :cards

@@ -69,14 +69,11 @@
                 %tr
                   %th カテゴリー
                   %td
-                    = link_to "#{@item.category.name}", '#'
-                      
+                    = link_to @item.category.parent.parent.name, '#'
+                    %br
+                    = link_to ">#{@item.category.parent.name}", '#'
                     %br
                     = link_to ">#{@item.category.name}", '#'
-                      
-                    %br
-                    = link_to ">#{@item.category.name}",'#'
-                    %br
                 %tr
                   %th ブランド
                   %td
@@ -96,7 +93,7 @@
                 %tr
                   %th 発送元の地域
                   %td
-                    = @address.prefecture
+                    = @item.from_area
                 %tr
                   %th 発送日の目安
                   %td 
@@ -123,31 +120,29 @@
           .comments
             - if @comments
               - @comments.each do |comment|
-                %p
+                %p.message
                   %strong
                     = link_to comment.user.nickname, "/users/#{comment.user_id}"
                     ：
-                  = comment.text
+                    = comment.text
+            - else
+              %p コメントはありません
 
+
+          %p.noticeMsg
+            相手のことを考え丁寧なコメントを心がけましょう。
+            %br
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
 
           %ul.commentBox__contents
           - if current_user
-            %form.new_comment{action: "#", method: "post"}
-              %input{name: 'utf8', type: 'hidden', value: '✓'}
-              %input{type: 'hidden', name: 'authenticity_token', value: 'gSPUqFq58bpRFqcxJjrtSPEDsMjekWGYQkg+pPeMK8leu2XUgdCiCDZJ209wGqkoxX7OI5eQoWvlGrkxoZaaUg=='}
-              %textarea#comment_body{required: 'required', name: 'comment[body]'}
-            %p.noticeMsg
-              相手のことを考え丁寧なコメントを心がけましょう。
-              %br
-              不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            %button.commentBtn{name: 'button', type: 'submit'}
-              %i.fas.fa-comment
-                コメントする
+            = form_with(model: [@item, @comment], local: true, id: "new_comment") do |form|
+              = form.text_area :text, placeholder: "", rows: "２",class: 'textbox'
+              = form.submit "コメントする", class: 'form__submit'
           - else
             %strong
               %p  商品の購入、コメントの投稿には新規登録/ログインが必要です 
-          %br
-          %br
+
           - if user_signed_in? && current_user.id != @item.user_id && @item.buyer_id == nil
             .buy-button
               = form_tag("/items/confilm/#{@item.id}", method: :get, id: @item.id) do

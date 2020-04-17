@@ -26,14 +26,17 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
+      
     else
-      render :new
+      redirect_to new_item_path
+      
     end
   end
-
+  
   def show
     @user = User.find(@item.user_id)
-    @address = Address.find(@item.user_id)
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
   
   def confilm
@@ -48,7 +51,6 @@ class ItemsController < ApplicationController
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
       @default_card_information = customer.cards.retrieve(card.card_id)
     end
-    @address = Address.find(@item.user_id)
   end
 
   def destroy
@@ -61,6 +63,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    
   end
 
   def update
@@ -71,9 +74,14 @@ class ItemsController < ApplicationController
     end
   end
 
+
+
+
+  
   private
 
   def item_params
+    
     params.require(:item).permit(:name, :text, :price, 
       :category_id, :status, :delivery_fee, :shipping_day, 
       :from_area, images_attributes: [:img]).merge(user_id: current_user.id)
@@ -83,3 +91,4 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 end
+
