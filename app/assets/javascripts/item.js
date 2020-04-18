@@ -41,7 +41,7 @@
 
   $('.listing_box').on('click', '.js-remove', function() {
     console.log("aaa")
-    $(this).parent().remove();
+    $(this).parent().remove('index');
     const targetIndex = $(this).parent().data('index')
     console.log(targetIndex);
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
@@ -70,3 +70,4 @@ $(function(){
       }
     })
   })
+  

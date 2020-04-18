@@ -21,7 +21,6 @@
         -#         %span.js-remove 削除
 
 
-            
         -#   #image-box
         -#     = f.fields_for :images do |image|
         -#       .js-file_group{"data-index" => "#{image.index}"}
@@ -33,11 +32,10 @@
           -#     = image_tag image.img.url, data: { index: i }, width: "100", height: '100'
           -#     %span.js-remove 削除
         .listing_previews_field_boxs{style: "display: flex"}
-          -# - if @item.present?
-          -#   - @item.images.each_with_index do |image, i|
-          -#     = image_tag image.img.url, data: { index: i }, width: "100", height: '100'
-          -#     %span.js-remove 削除
-
+          - if @item.present?
+            - @item.images.each_with_index do |image, i|
+              = image_tag image.img.url, data: { index: i }, width: "100", height: '100'
+              %span.js-remove 削除
 
         .listing_previews_filed{style: "display: flex"}
           %label-view-function 画像を追加する
@@ -45,7 +43,13 @@
         #previews
           = f.fields_for :images do |i|
             = i.file_field :img, class: "js-file",data: { index: i.index }
-          
+        
+        .hidden-content
+          =f.fields_for :images do |i|
+            = i.file_field :img, class: "hidden-field"
+            = i.check_box :_destroy, class: "hidden-checkbox"
+          -# - @item.images.length.upto(4) do |i|
+          -#   %input{name: "item[images_attributes][#{i}][src]", id: "item_images_attributes_#{i}_src", class: "hidden-field", type: "file"}
 
 
       .listing_name_box
