@@ -9,15 +9,17 @@
         %h2 購入内容の確認
       .single-container__main__buy__item
         .single-container__main__buy__item__inner
-          .image
+          %figure.image
+            = image_tag @item.images[0].img_url
           .detail
-            %p ギター 
-            %p ¥100 (税込) 送料込み
+            %p= @item.name
+            %p= "¥#{@item.price}"
+            (税込) 送料込み
       .single-container__main__buy__explantion
         .form
           .money
             %h3 支払い金額
-            %h2 ¥100
+            %h2= "¥#{@item.price}"
           .payment-method
             .select
               %p 支払い方法
@@ -25,23 +27,27 @@
             .card-info
               %p クレジットカード
               
-              %p ************2020
+              %p= "**** **** **** " + @default_card_information.last4
               
-              %p 有効期限 01/20
+              - exp_month = @default_card_information.exp_month.to_s
+              - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+              %p= "有効期限 #{exp_month + " / " + exp_year}"
             %h3 💳
           .delivery-address
             .l-select
               %p 配送先
               = link_to '変更する'
             .location
-              %p 〒542-0076
-              %p 大阪府 大阪市 中央区 難波5町目 1-60 なんばスカイオ15階
-              %p テックキャンプ なんばスカイオ校
+              %p= "〒#{@address.postal}"
+              %p= @address.prefecture
+              %p= @address.municipality
+              %p= @address.address
           .attention
             .attention__rules
               %p 郵便局/コンビニ受取をご希望の方は、購入後、取引画面から受取場所変更をすることが可能です。出品者が発送作業を開始した後には受取場所変更ができませんので、早めに受取場所の変更を行ってください。
             .attention__buy-button
-              = link_to '購入する'
+              = form_tag(controller: :purchase, action: :pay, method: :post, id: @item.id) do
+                %button.buy 購入する
       
   .single-container__footer
     .single-container__footer__box

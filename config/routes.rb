@@ -15,9 +15,8 @@ Rails.application.routes.draw do
       get 'logout'
     end
   end
-  resources :cards, only: [:new, :show] do
+  resources :cards, only: [:new, :show, :index] do
     collection do
-      post 'show', to: 'cards#show'
       post 'pay', to: 'cards#pay'
       post 'delete', to: 'cards#delete'
     end
@@ -30,11 +29,19 @@ Rails.application.routes.draw do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
-      get 'confilm'
+      get 'confilm/:id', to: 'items#confilm'
     end
     resources :comments, only: :create
   end
   
   resources :category, only: [:index]
+
+  resources :purchase, only: [:index] do
+    collection do
+      post 'pay', to: 'purchase#pay'
+      get 'done', to: 'purchase#done'
+    end
+
+  end
   
 end

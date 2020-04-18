@@ -1,205 +1,204 @@
-
-.single-container{
+.single-container {
   height: 100vh;
   width: 100vw;
   background-color: #f8f8f8;
-  &__header{
+  &__header {
     height: 128px;
-    .logo{
+    .logo {
       width: 210px;
       margin: 0 auto;
       padding-top: 40px;
-    h1{
-      width: 193px;
-      margin: 40px auto;
-      a{
-        width: 185px;
-        height: 49px;
-        line-height: 49px;
+      h1 {
+        width: 193px;
+        margin: 40px auto;
+        a {
+          width: 185px;
+          height: 49px;
+          line-height: 49px;
+        }
       }
-      }
-    } 
+    }
   }
-  &__main{
+  &__main {
     height: 945px;
     background-color: #f8f8f8;
-    &__buy{
+    &__buy {
       margin: 0 auto;
       width: 700px;
       height: 945px;
       background-color: #fff;
-    &__head{
-    height: 97px;
-    h2{
-      font-size: 21px;
-      text-align: center;
-      padding: 32px;
-      font-weight: bold;
-      color: rgb(54, 54, 54);
-    }
-    }
-    &__item{
-      border-top: 1px solid #f8f8f8;
-      border-bottom: 1px solid #f8f8f8;
-      height: 145px;
-      position: relative;
-      &__inner{
-        width: 350px;
-        height: 80px;
-        display: flex;
-        position: absolute;
-        top: 31px;
-        left: 175px;
-        right: 175px;
-        .image{
+      &__head {
+        height: 97px;
+        h2 {
+          font-size: 21px;
+          text-align: center;
+          padding: 32px;
+          font-weight: bold;
+          color: rgb(54, 54, 54);
+        }
+      }
+      &__item {
+        border-top: 1px solid #f8f8f8;
+        border-bottom: 1px solid #f8f8f8;
+        height: 145px;
+        position: relative;
+        &__inner {
+          width: 350px;
           height: 80px;
-          width: 80px;
-          background-color: #3CCACE;
-        }
-        .detail{
-          padding: 15px 0 0 20px;
-        }
-      }
-    }
-    &__explantion{
-      width: 700px;
-      height: 700px;
-      .form{
-        width: 350px;
-        height: 700px;
-        margin: 0 auto;
-        .money{
-          height: 100px;
-          border-bottom: 1px solid #3CCACE;
           display: flex;
-          justify-content: space-between;
-        h3{
-          font-weight: bold;
-          color: rgb(54, 54, 54);
-          font-size: 18px;
-          line-height: 100px;
-        } 
-        h2{
-          font-weight: bold;
-          color: rgb(54, 54, 54);
-          font-size: 25px;
-          line-height: 100px;
-        }
-        }
-        .payment-method{
-          height: 210px;
-          border-bottom: 1px solid #3CCACE;
-          .select{
-            display: flex;
-            padding-top: 30px;
-            justify-content: space-between;
-            p{
-              font-size: 14px;
-              font-weight: bold;
-            }
-            a{
-              text-decoration: none;
-              color: #3CCACE;
-              font-size: 13px;
-              transition: color .3s;
-            }
-            a:hover{
-              color: rgb(132, 220, 223);
-            }
+          position: absolute;
+          top: 31px;
+          left: 175px;
+          right: 175px;
+          .image {
+            height: 80px;
+            width: 80px;
+            background-color: #3ccace;
           }
-          .card-info{
-              padding-top: 15px;
-            p{
-              font-size: 13px;
+          .detail {
+            padding: 15px 0 0 20px;
+          }
+        }
+      }
+      &__explantion {
+        width: 700px;
+        height: 700px;
+        .form {
+          width: 350px;
+          height: 700px;
+          margin: 0 auto;
+          .money {
+            height: 100px;
+            border-bottom: 1px solid #3ccace;
+            display: flex;
+            justify-content: space-between;
+            h3 {
+              font-weight: bold;
               color: rgb(54, 54, 54);
-              padding-bottom: 5px;
+              font-size: 18px;
+              line-height: 100px;
             }
-          }
-          h3{
-            font-size: 30px;
-          }
-        }
-        .delivery-address{
-          height: 150px;
-          border-bottom: 1px solid #3CCACE;
-          .l-select{
-            display: flex;
-            padding-top: 30px;
-            justify-content: space-between;
-            p{
-              font-size: 14px;
+            h2 {
               font-weight: bold;
-            }
-            a{
-              text-decoration: none;
-              color: #3CCACE;
-              font-size: 13px;
-              transition: color .3s;
-            }
-            a:hover{
-              color: rgb(132, 220, 223);
+              color: rgb(54, 54, 54);
+              font-size: 25px;
+              line-height: 100px;
             }
           }
-          .location{
-            padding-top: 15px;
-          p{
-            font-size: 13px;
-            color: rgb(54, 54, 54);
-            padding-bottom: 2px;
-          }
-        }
-        }
-        .attention{
-          height: 190px;
-          &__rules{
-            height: 140px;
-            p{
-              color: #888;
-              line-height: 1.5;
-              padding: 15px 0;
-              font-size: 14px;
+          .payment-method {
+            height: 210px;
+            border-bottom: 1px solid #3ccace;
+            .select {
+              display: flex;
+              padding-top: 30px;
+              justify-content: space-between;
+              p {
+                font-size: 14px;
+                font-weight: bold;
+              }
+              a {
+                text-decoration: none;
+                color: #3ccace;
+                font-size: 13px;
+                transition: color 0.3s;
+              }
+              a:hover {
+                color: rgb(132, 220, 223);
+              }
+            }
+            .card-info {
+              padding-top: 15px;
+              p {
+                font-size: 13px;
+                color: rgb(54, 54, 54);
+                padding-bottom: 5px;
+              }
+            }
+            h3 {
+              font-size: 30px;
             }
           }
-          &__buy-button{
-            height: 50px;
-            background-color: #3CCACE;
-            a{
-              text-decoration: none;
-              color: white;
-              line-height: 50px;
-              font-size: 14px;
-              font-weight: bold;
-              display: block;
+          .delivery-address {
+            height: 150px;
+            border-bottom: 1px solid #3ccace;
+            .l-select {
+              display: flex;
+              padding-top: 30px;
+              justify-content: space-between;
+              p {
+                font-size: 14px;
+                font-weight: bold;
+              }
+              a {
+                text-decoration: none;
+                color: #3ccace;
+                font-size: 13px;
+                transition: color 0.3s;
+              }
+              a:hover {
+                color: rgb(132, 220, 223);
+              }
+            }
+            .location {
+              padding-top: 15px;
+              p {
+                font-size: 13px;
+                color: rgb(54, 54, 54);
+                padding-bottom: 2px;
+              }
+            }
+          }
+          .attention {
+            height: 190px;
+            &__rules {
+              height: 140px;
+              p {
+                color: #888;
+                line-height: 1.5;
+                padding: 15px 0;
+                font-size: 14px;
+              }
+            }
+            &__buy-button {
               height: 50px;
-              width: 350px;
-              text-align: center;
-              transition: background-color .3s;
-            }
-            a:hover{
-              background-color: rgb(132, 220, 223);
+              background-color: #3ccace;
+              .buy {
+                text-decoration: none;
+                color: white;
+                line-height: 50px;
+                font-size: 18px;
+                font-weight: bold;
+                display: block;
+                height: 50px;
+                width: 350px;
+                text-align: center;
+                transition: background-color 0.3s;
+                padding: 0;
+              }
+              .buy:hover {
+                background-color: rgb(132, 220, 223);
+              }
             }
           }
         }
       }
-    }
     }
   }
-  &__footer{
+  &__footer {
     height: 220px;
     background-color: #f8f8f8;
-    &__box{
+    &__box {
       width: 460px;
       height: 220px;
       margin: 0 auto;
-      .links{
+      .links {
         padding-top: 35px;
         height: 185px;
         position: relative;
-        ul{
+        ul {
           display: flex;
           justify-content: space-around;
-          li{
-
+          li {
             a {
               text-decoration: none;
               display: block;
@@ -208,7 +207,7 @@
             }
           }
         }
-        .small{
+        .small {
           font-size: 13px;
           color: #333333;
           width: 84px;

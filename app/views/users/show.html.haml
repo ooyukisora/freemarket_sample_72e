@@ -20,7 +20,7 @@
               = link_to "購入する", '#'
           %li<>
             .contents__left_menu__card
-              = link_to "クレジットカードを登録する",'/cards/new'
+              = link_to "クレジットカードを登録する", new_card_path
           %li<>
             .contents__left__menulog-out
               = link_to "ログアウト", logout_users_path
@@ -34,11 +34,17 @@
         .contents__right__main__name
           = current_user.nickname
       .contents__right__infomation
-        .item
-          出品中の商品
-        .item
-          出品中の商品
-        .item
-          出品中の商品
+        - @items.each do |item|
+          - if(item.user_id == current_user.id)
+            .item
+              = link_to item_path(item.id) do
+                %figure.productLists__list__img
+                  = image_tag item.images.find_by(item_id: item.id).img_url
+              .text
+                %label name：
+                %a= item.name
+                %br
+                %label price：
+                %a= item.price
   = render "footer_top"
 

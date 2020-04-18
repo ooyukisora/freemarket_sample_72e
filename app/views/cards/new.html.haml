@@ -3,7 +3,7 @@
     = image_tag 'http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg'
   .card
     %h3 新規クレジットカード登録
-    = form_tag('#', method: :post, id: 'charge-form',  name: "inputForm") do
+    = form_tag(pay_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
       .card__number
         .card__number__field
           %label カード番号 
