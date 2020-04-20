@@ -1,4 +1,4 @@
 
-$("#favorite-button").html("<%= j(render partial: 'favorite', locals: { items: @item, favorites: @favorites, favorite: @favorite}) %>")
+$("#favoriteBtn").html("<%= escape_javascript(render partial: 'favorite', locals: { items: @item, favorites: @favorites, favorite: @favorite}) %>")
 
 

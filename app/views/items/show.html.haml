@@ -101,19 +101,18 @@
           .optionalArea
             %ul
               %li#favoriteBtn.optionalBtn.favoriteBtn
-             
                 
               - if user_signed_in?
-                
                 - if @item.favorite_user(current_user.id)
-                  = button_to item_favorite_path(@item), method: :delete, id: "favorite-button", remote: true do
+                  = button_to item_favorite_path(@item), method: :delete, id: "favoriteBtn", remote: true do
+                    お気に入り
                     %i.fas.fa-star
                     %span
                       = @item.favorites_count
                 - else
-                  = button_to item_favorites_path(@item), id: "favorite-button", remote: true do
+                  = button_to item_favorites_path(@item), id: "favoriteBtn", remote: true do
                     お気に入り
-                    %i.fas.fa-star
+                    %i.far.fa-star
                     %span
                       = @item.favorites_count
               - else
@@ -153,15 +152,15 @@
         
         .commentBox
           .comments
-            - if @comments
+            - if @comments 
               - @comments.each do |comment|
                 %p.message
                   %strong
                     = link_to comment.user.nickname, "/users/#{comment.user_id}"
-                    ：
+                    さん：
                     = comment.text
             - else
-              %p コメントはありません
+            　
 
 
           %p.noticeMsg
