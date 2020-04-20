@@ -8,6 +8,7 @@ FactoryBot.define do
     delivery_fee          {"出品者負担"}
     from_area             {"東京都"}
     shipping_day           {"2日"}
-    user
+    user_id   {"1"}
+    category_id {"100"}
   end
 end
