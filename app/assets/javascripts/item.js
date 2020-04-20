@@ -17,6 +17,7 @@
   let imageCount = $('.img-box').length;
   for (var i=0; i<imageCount; i++) {
     // コンソールに0〜3の連番を表示
+    console.log(fileIndex)
     fileIndex.shift();
   }
   

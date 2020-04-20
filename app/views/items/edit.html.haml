@@ -25,6 +25,7 @@
             = i.file_field :img, class: "js-file",data: { index: i.index}
             - if @item.persisted?
               = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden-destroy'
+          = file_field_tag :img, name: "item[images_attributes][#{@item.images.count}][img]", class: 'js-file', data: { index: @item.images.count}
       .listing_name_box
         .listing_name_box_field
           %label-item 商品名

@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
 
   def edit
 
-    @item.images.new
+    # @item.images.new
     
     grandchild_category = @item.category
     child_category = grandchild_category.parent
@@ -74,7 +74,6 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      # binding.pry
       redirect_to root_path
     else
       render :new
