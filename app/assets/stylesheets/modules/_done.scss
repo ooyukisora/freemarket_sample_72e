@@ -1,0 +1,38 @@
+.done {
+  background-color: #f5f5f5;
+  text-align: center;
+  height: 100vh;
+  &__header {
+    .icon {
+      display: inline-block;
+      text-align: center;
+      height: 70px;
+      width: 250px;
+      margin-top: 30px;
+      background: url(http://furima.tokyo//assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg)
+        no-repeat;
+    }
+  }
+  .Main {
+    width: 500px;
+    height: 250px;
+    margin: auto;
+    background-color: #fff;
+    .content {
+      margin: auto 20%;
+      .image {
+        display: flex;
+        float: left;
+      }
+      h5 {
+        font-size: 20px;
+      }
+    }
+  }
+  &__footer {
+    position: fixed;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+  }
+}

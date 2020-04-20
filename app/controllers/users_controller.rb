@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @items = Item.all
   end
 
   def destroy
