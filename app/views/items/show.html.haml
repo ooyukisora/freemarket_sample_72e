@@ -31,12 +31,7 @@
           .itemBox__body
             %ul
               %li
-            
-                -# - objects = @item.images
-                -# - objects.each.with_index do |object, index|
-                -#   = image_tag object.img_url
-                = image_tag @item.images[0].img_url
-                  
+                = image_tag @item.images[0].img_url 
                 %ul
                   %li
                     - if @item.images[1]
@@ -143,10 +138,9 @@
             %strong
               %p  商品の購入、コメントの投稿には新規登録/ログインが必要です 
 
-          - if user_signed_in? && current_user.id != @item.user_id 
+          - if user_signed_in? && current_user.id != @item.user_id && @item.buyer_id == nil
             .buy-button
-              = link_to '購入確認画面へ', class:"buy-confilm"
-
+              =link_to '購入確認画面へ', "/items/confilm/#{@item.id}", method: :get, id: @item.id
       %ul.links
         %li
           = link_to '#' do

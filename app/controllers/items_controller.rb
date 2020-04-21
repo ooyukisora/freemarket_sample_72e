@@ -1,5 +1,6 @@
+  
 class ItemsController < ApplicationController
-  before_action :set_item, only:[:show, :edit, :destroy]
+  before_action :set_item, only:[:show, :edit, :destroy, :confilm]
 
   def index
   end
@@ -25,26 +26,33 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
-      
     else
       redirect_to new_item_path
-      
     end
   end
   
   def show
-    
     @user = User.find(@item.user_id)
-    
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
   end
   
-  def comfilm
+  def confilm
+    @address = Address.find(@item.user_id)
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+      #登録された情報がない場合にカード登録画面に移動
+      redirect_to controller: "card", action: "new"
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      #保管した顧客IDでpayjpから情報取得
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
+      @default_card_information = customer.cards.retrieve(card.card_id)
+    end
   end
 
   def destroy
-    
     if @item.destroy
       redirect_to root_path
     else
@@ -53,7 +61,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update
@@ -63,15 +70,10 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-
-
-
-
   
   private
 
   def item_params
-    
     params.require(:item).permit(:name, :text, :price, 
       :category_id, :status, :delivery_fee, :shipping_day, 
       :from_area, images_attributes: [:img]).merge(user_id: current_user.id)
