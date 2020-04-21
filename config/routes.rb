@@ -33,9 +33,11 @@ Rails.application.routes.draw do
       get 'confilm'
     end
     resources :comments, only: :create
-    post '/items/:item_id/favorites' => "favorites#create"
-    delete '/items/:item_id/favoraites' => "favorites#destroy"
-    resources :favorites, only: [:create, :destroy]
+    # post '/items/:item_id/favorites' => "favorites#create"
+    member do
+      delete 'favoraites' => "favorites#destroy"
+    end
+    resources :favorites, only: [:create]
   end
   
   resources :category, only: [:index]

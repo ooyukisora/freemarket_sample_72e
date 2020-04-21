@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   
   has_many :images, dependent: :destroy
   has_many :comments
-  
+
   has_many :favorites, dependent: :destroy
     def favorite_user(user_id)
       favorites.find_by(user_id: user_id)

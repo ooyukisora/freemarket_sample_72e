@@ -98,28 +98,8 @@
                   %th 発送日の目安
                   %td 
                     = @item.shipping_day
-          .optionalArea
-            %ul
-              %li#favoriteBtn.optionalBtn.favoriteBtn
-                
-              - if user_signed_in?
-                - if @item.favorite_user(current_user.id)
-                  = button_to item_favorite_path(@item), method: :delete, id: "favoriteBtn", remote: true do
-                    お気に入り
-                    %i.fas.fa-star
-                    %span
-                      = @item.favorites_count
-                - else
-                  = button_to item_favorites_path(@item), id: "favoriteBtn", remote: true do
-                    お気に入り
-                    %i.far.fa-star
-                    %span
-                      = @item.favorites_count
-              - else
-                %i.fas.fa-star
-                %span
-                  = @item.favorites_count
-
+        
+              
 
               -# - if @favoraite
               -#   = link_to "/items/#{@item.id}/favoraites", method: :delete
@@ -128,8 +108,8 @@
               -#   = link_to "/items/#{@item.id}/favoraites", method: :post
               -#   %i.fas.fa-star
               -# = @item.favorite_count.to_s
-
-
+            #favorites
+              = render "favorite"
 
 
 
@@ -160,7 +140,7 @@
                     さん：
                     = comment.text
             - else
-            　
+              コメントはありません
 
 
           %p.noticeMsg

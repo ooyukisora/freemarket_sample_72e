@@ -1,4 +1,4 @@
-
-$("#favoriteBtn").html("<%= escape_javascript(render partial: 'favorite', locals: { items: @item, favorites: @favorites, favorite: @favorite}) %>")
+<%# <% binding.pry %> 
+$("#favorites").html("<%= escape_javascript(render partial: 'items/favorite') %>")
 
 
