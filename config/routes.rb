@@ -33,7 +33,7 @@ Rails.application.routes.draw do
       get 'confilm'
     end
     resources :comments, only: :create
-    # post '/items/:item_id/favorites' => "favorites#create"
+    
     member do
       delete 'favoraites' => "favorites#destroy"
     end

@@ -100,22 +100,8 @@
                     = @item.shipping_day
         
               
-
-              -# - if @favoraite
-              -#   = link_to "/items/#{@item.id}/favoraites", method: :delete
-              -#   %i.fas.fa-star
-              -# - else
-              -#   = link_to "/items/#{@item.id}/favoraites", method: :post
-              -#   %i.fas.fa-star
-              -# = @item.favorite_count.to_s
             #favorites
               = render "favorite"
-
-
-
-
-
-
 
             %ul.optional
               %li.optionalBtn
