@@ -157,6 +157,7 @@
   & ul {
     margin: 10px 0 0;
     display: flex;
+    
     & li.likeBtn {
       font-size: 15px;
       margin-right: auto;
@@ -166,8 +167,9 @@
       border: 1px solid #ffb340;
     } 
   }
-  & li.optionalBtn {
+  & li {
     font-size: 14px;
+    
     & a {
       padding: 6px 10px;
       display: inline-block;
@@ -362,6 +364,3 @@
 }
 
 
-.message{
-  
-}
