@@ -3,7 +3,7 @@ document.addEventListener(
   (e) => {
     if (document.getElementById("token_submit") != null) {
       //token_submitというidがnullの場合、下記コードを実行しない
-      Payjp.setPublicKey("pk_test_4ab3fff2d7f9b2f840ed3267"); //公開鍵
+      Payjp.setPublicKey("pk_live_bdacd36f8603f15c93faf777"); //公開鍵
       let btn = document.getElementById("token_submit"); //IDがtoken_submitの場合に取得
       btn.addEventListener("click", (e) => {
         //ボタンが押されたときに作動
