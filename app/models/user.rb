@@ -10,7 +10,12 @@ class User < ApplicationRecord
       has_one :address
       has_many :comments
       has_many :items
+
       has_many :favorites
+
+
+
+  has_many :cards
 
 
 end
