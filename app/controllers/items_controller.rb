@@ -1,6 +1,7 @@
   
 class ItemsController < ApplicationController
-  before_action :set_item, only:[:show, :edit, :destroy, :confilm]
+  before_action :set_item, only:[:show, :edit, :destroy, :update]
+
 
   def index
   end
@@ -8,7 +9,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
-    @category_parent_array = ["---"]
+    @category_parent_array = []
       Category.where(ancestry: nil).each do |parent|
         @category_parent_array << parent.name
     end
@@ -56,18 +57,38 @@ class ItemsController < ApplicationController
     if @item.destroy
       redirect_to root_path
     else
-      render :show
+      redirect_to new_item_path
     end
   end
 
+
   def edit
+    
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+
+    @category_parent_array = []
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+
+    @category_children_array = []
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+    end
+
+    @category_grandchildren_array = []
+    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren
+    end
+
   end
 
   def update
     if @item.update(item_params)
       redirect_to root_path
     else
-      render :edit
+      render :new
     end
   end
   
@@ -76,7 +97,7 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :text, :price, 
       :category_id, :status, :delivery_fee, :shipping_day, 
-      :from_area, images_attributes: [:img]).merge(user_id: current_user.id)
+      :from_area, images_attributes: [:img, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def set_item

@@ -4,7 +4,7 @@
     return html;
   }
   const buildImg = (index, url)=> {
-    const html = `<div data-index="${index}">
+    const html = `<div data-index="${index}" class="img-box">
                   <img src="${url}" width="100px" height="100px">
                     <br>
                     <span class="js-remove">
@@ -14,6 +14,12 @@
     return html;
   }
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+  let imageCount = $('.img-box').length;
+  for (var i=0; i<imageCount; i++) {
+    // コンソールに0〜3の連番を表示
+    console.log(fileIndex)
+    fileIndex.shift();
+  }
   
   lastIndex = $('.js-box:last').data('index');
   fileIndex.splice(0, lastIndex);
@@ -29,26 +35,23 @@
     const targetIndex = $(this).data('index');
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
-    if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
-      img.setAttribute('img', blobUrl);
-    } else {  
-      $('.listing_previews_field_boxs').append(buildImg(targetIndex, blobUrl));
-      if ($('.js-file').length < 4) $('#image-box').append(buildFileField(fileIndex[0]));
+    $('.listing_previews_field_boxs').append(buildImg(targetIndex, blobUrl));
+
+      console.log(fileIndex)
+      if ($('.js-file').length < 4) $('#previews').append(buildFileField(fileIndex[0]));
       fileIndex.shift();
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
-    }
+  
   });
 
   $('.listing_box').on('click', '.js-remove', function() {
-    console.log("aaa")
     $(this).parent().remove();
     const targetIndex = $(this).parent().data('index')
     console.log(targetIndex);
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     $(`#item_images_attributes_${targetIndex}_img`).remove();
-    // $(`img[data-index="${targetIndex}"]`).remove();
-    $('#image-box').append(buildFileField(fileIndex[targetIndex]));
+
 
   });
 });
@@ -70,3 +73,4 @@ $(function(){
       }
     })
   })
+  

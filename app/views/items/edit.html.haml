@@ -1,6 +1,110 @@
-.contents.row
-  .container
-    = form_with(model: @item, local: true) do |form|
-      %h3
-        編集する
-      = form.submit "SEND"
+.listing_main
+  .listing_header
+    = image_tag 'http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg'
+  .listing_body
+    %h2 商品情報を入力
+    = form_with model: @item, local: true do |f|
+      %label
+      .listing_box
+        .listing_box_field
+          %label-item 出品画像
+          %span-item 必須
+          %br
+        .listing_previews_field_boxs{style: "display: flex"}
+          - if @item.persisted?
+            - @item.images.each_with_index do |image, i|
+              - unless image.img.url == nil
+                .img-box{ "data-index": i }
+                  = image_tag image.img.url, data: { index: i }, width: "100", height: '100'
+                  .js-remove 削除
+        .listing_previews_filed{style: "display: flex"}
+          %label-view-function 画像を追加する
+      #image-box
+        #previews
+          = f.fields_for :images do |i|
+            = i.file_field :img, class: "js-file",data: { index: i.index}
+            - if @item.persisted?
+              = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden-destroy'
+          = file_field_tag :img, name: "item[images_attributes][#{@item.images.count}][img]", class: 'js-file', data: { index: @item.images.count}
+      .listing_name_box
+        .listing_name_box_field
+          %label-item 商品名
+          %span-item 必須
+          %br/
+        = f.text_field :name, placeholder: "40文字まで"
+        .listing_ex_box_field
+          %label-item 商品説明
+          %span-item 必須
+          %br/
+        = f.text_area :text, placeholder: "\n   商品の説明（必須 1000文字以内）\n      (色、素材、重さ、注意点など) \n\n   例） 2010年頃に1万円で購入したジャケットです。 ライトグレーで傷はありま\n   せん。合わせやすいのでおすすめです。\n\n"
+      .listing_details_box
+        .listing_details_box_field
+          %label-items 商品の詳細
+          %br/
+        .listing_details_box_category
+          .listing_details_box_category_field
+            %br/
+            %label-item カテゴリー
+            %span-item 必須
+            .listing-select-wrapper
+              .listing-select-wrapper__box
+                = f.select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, { class: 'category-wrapper__category form-control', id: 'parent_category'}
+            .category-wrapper-select#children_wrapper
+              .listing-select-wrapper__box
+                = f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: 'category-wrapper__category form-control', id: 'child_category'}
+            .category-wrapper-select#grandchildren_wrapper
+              .listing-select-wrapper__box
+                = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{}, {class: 'category-wrapper__category form-control', id: 'grandchild_category'}
+        
+                
+        .listing_details_box_status
+          %label-item 商品の状態
+          %span-item 必須
+          %br/
+        = f.collection_select :status, Condition.all, :name, :name, {}, prompt: "---"
+      .listing_delivary_box
+        .listing_delivary_box_field
+          %label-items 配送について
+          %br/
+        .listing_delivary_box_fee
+          %label-item 配送料の負担
+          %span-item 必須
+          %br/
+        = f.collection_select :delivery_fee, Burden.all, :name, :name, {}, prompt: "---"
+        .listing_delivary_box_area
+          %label-item 発送元の地域 
+          %span-item 必須
+          %br/
+        = f.collection_select :from_area, Prefecture.all, :name, :name, {}, prompt: "---"
+        .listing_delivary_box_shipping
+          %label-item 発送までの日数
+          %span-item 必須
+          %br/
+        = f.collection_select :shipping_day, Shipday.all, :name, :name, {}, prompt: "---"
+      .listing_price_box
+        .listing_price_box_field
+          %label-items 価格（¥300〜9,999,999）
+          %br/
+        .listing_price_box_area
+          .listing_price_box_price
+            %label-item 販売価格
+            %span-item 必須
+          .listing_price_input_area1
+            %span-items ¥
+            -# %input#price_calc.price_form-box{placeholder: "0", type: "number"}
+            = f.number_field :price, style: "", id: "price_calc"
+        .listing_price_box_area2
+          .listing_price_fee
+            販売手数料(10%)
+          .listing_right_bar
+        .listing_price_box_area3
+          .product_profit
+            販売利益
+          = f.number_field :price, style: "display: none", id: "price"
+          .listing_right_bar_2
+        .listing_submit
+          = f.submit '出品する'
+          %br/
+          .listing_submit2
+            =link_to "戻る", root_path
+  .listing_footer

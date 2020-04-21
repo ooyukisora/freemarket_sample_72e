@@ -52,3 +52,51 @@ describe Item do
     expect(item.errors.messages[:category_id]).to include("can't be blank")
   end
 end
+
+
+describe "edit" do
+
+  it "商品編集時にnameがなければ無効" do
+    @item = FactoryBot.build(:item)
+    @item.update(name: nil)
+    expect(@item.valid?).to eq(false)
+  end
+
+  it "商品編集時にpriceがなければ無効" do
+    @item = FactoryBot.build(:item)
+    @item.update(price: nil)
+    expect(@item.valid?).to eq(false)
+  end
+
+  it "商品編集時にtextがなければ無効" do
+    @item = FactoryBot.build(:item)
+    @item.update(text: nil)
+    expect(@item.valid?).to eq(false)
+  end
+
+  it "商品編集時にstatusがなければ無効" do
+    @item = FactoryBot.build(:item)
+    @item.update(status: nil)
+    expect(@item.valid?).to eq(false)
+  end
+
+  it "商品編集時にdelivery_feeがなければ無効" do
+    @item = FactoryBot.build(:item)
+    @item.update(delivery_fee: nil)
+    expect(@item.valid?).to eq(false)
+  end
+
+  it "商品編集時にfrom_areaがなければ無効" do
+    @item = FactoryBot.build(:item)
+    @item.update(from_area: nil)
+    expect(@item.valid?).to eq(false)
+  end
+
+  it "商品編集時にshipping_dayがなければ無効" do
+    @item = FactoryBot.build(:item)
+    @item.update(shipping_day: nil)
+    expect(@item.valid?).to eq(false)
+  end
+
+end
+
