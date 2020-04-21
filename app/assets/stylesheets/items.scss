@@ -154,17 +154,31 @@
 .optionalArea {
   display: flex;
   justify-content: space-between;
+  width: 50%;
+  .favorites{
+    width: 50%;
+  }
   & ul {
     margin: 10px 0 0;
     display: flex;
-    
-    & li.likeBtn {
+    width: 150px;
+    & li.favBtn {
       font-size: 15px;
       margin-right: auto;
       padding: 10px 10px;
       border-radius: 40px;
       color: #3ccace;
-      border: 1px solid #ffb340;
+      
+      width: 150px;
+     #favoriteBtn{
+       height: 36px;
+       width: 150px;
+       border: 1px solid #ffb340;
+       border-radius: 2px;
+       a{
+         font-size: 15px;
+       }
+     }
     }
   }
   & li {
@@ -189,6 +203,9 @@
         content: "\f024";
       }
     }
+  }
+  .optionalBtn li{
+    width: 300px;
   }
 }
 
