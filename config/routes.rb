@@ -36,6 +36,11 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
     resources :comments, only: :create
+    
+    member do
+      delete 'favoraites' => "favorites#destroy"
+    end
+    resources :favorites, only: [:create]
   end
   
   resources :category, only: [:index]

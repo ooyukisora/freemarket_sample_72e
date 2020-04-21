@@ -95,11 +95,11 @@
                   %th 発送日の目安
                   %td 
                     = @item.shipping_day
-          .optionalArea
-            %ul
-              %li#likeBtn.optionalBtn.likeBtn
-                %i.fas.fa-star
-                  お気に入り 0
+        
+              
+            #favorites
+              = render "favorite"
+
             %ul.optional
               %li.optionalBtn
                 = link_to '#' do
@@ -115,15 +115,15 @@
         
         .commentBox
           .comments
-            - if @comments
+            - if @comments 
               - @comments.each do |comment|
                 %p.message
                   %strong
                     = link_to comment.user.nickname, "/users/#{comment.user_id}"
-                    ：
+                    さん：
                     = comment.text
             - else
-              %p コメントはありません
+              コメントはありません
 
 
           %p.noticeMsg

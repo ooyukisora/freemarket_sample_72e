@@ -13,6 +13,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.references :buyer
       # t.string :brand
       # t.string :size 
+      t.integer :favorites_count
       t.timestamps
     end
   end

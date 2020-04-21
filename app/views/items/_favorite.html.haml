@@ -1,0 +1,21 @@
+.optionalArea
+  %ul
+    %li.favBtn
+        
+      - if user_signed_in?
+        - if @item.favorite_user(current_user.id)
+          = button_to favoraites_item_path(@item.id), method: :delete, id: "favoriteBtn", remote: true do
+            お気に入り
+            %i.fas.fa-star
+            %span
+              = @item.favorites_count
+        - else
+          = button_to item_favorites_path(@item.id), id: "favoriteBtn", remote: true do
+            お気に入り
+            %i.far.fa-star
+            %span
+              = @item.favorites_count
+      - else
+        %i.fas.fa-star
+        %span
+          = @item.favorites_count

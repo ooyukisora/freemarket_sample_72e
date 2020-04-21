@@ -11,6 +11,11 @@ class User < ApplicationRecord
       has_many :comments
       has_many :items
 
+      has_many :favorites
+
+
+
   has_many :cards
+
 
 end
