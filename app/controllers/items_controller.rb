@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
       #登録された情報がない場合にカード登録画面に移動
       redirect_to controller: "card", action: "new"
     else
-      Payjp.api_key = Rails.application.credentials.[payjp][:payjp_private_key]
+      Payjp.api_key = Rails.application.credentials[payjp][:payjp_private_key]
       #保管した顧客IDでpayjpから情報取得
       customer = Payjp::Customer.retrieve(card.customer_id)
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
